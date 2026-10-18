@@ -1,451 +1,253 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Longevity Sudan | Youth Sustainable Development</title>
-    <!-- Tailwind CSS -->
+    <title>Longevity Sudan | جمعية لونجيفيتي السودان</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    
+    <!-- Google Fonts: Cairo & Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            green: '#1b3b2b',
-                            lightgreen: '#2d5a41',
-                            gold: '#d4af37',
-                            sand: '#f7f5f0',
-                            slate: '#1e293b'
-                        }
+                        brandBg: '#050505',
+                        brandCard: '#0f0f0f',
+                        brandBorder: '#222222',
+                        brandText: '#f5f5f5',
+                        brandMuted: '#888888',
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                        monoSpace: ['Space Grotesk', 'sans-serif']
                     }
                 }
             }
         }
     </script>
+
     <style>
-        .hero-overlay {
-            background: linear-gradient(135deg, rgba(27, 59, 43, 0.92) 0%, rgba(15, 31, 23, 0.82) 100%);
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #050505;
+            color: #f5f5f5;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .mono-font {
+            font-family: 'Space Grotesk', sans-serif;
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #d4af37 0%, #fef08a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .grain-overlay {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
         }
     </style>
 </head>
-<body class="bg-brand-sand font-sans text-slate-800 antialiased selection:bg-brand-gold selection:text-brand-green">
+<body class="antialiased selection:bg-white selection:text-black">
 
-    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-brand-green/95 backdrop-blur-md text-white border-b border-white/10" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-gold to-yellow-200 flex items-center justify-center text-brand-green font-extrabold text-xl shadow-lg">
-                        L
-                    </div>
-                    <span class="font-bold text-2xl tracking-tight text-white">LONGEVITY<span class="text-brand-gold">.</span></span>
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-brandBorder">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo with New Geometric Emblem -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 border border-white/20 bg-black flex items-center justify-center transition-all group-hover:border-white">
+                    <img src="logo.png" alt="Longevity Emblem" class="w-7 h-7 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/><path d=\'M75 85 L25 85 L25 65 L55 65 L55 15 L75 15 Z\' opacity=\'0.3\'/></svg>'">
                 </div>
-                
-                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                    <a href="#about" class="hover:text-brand-gold transition">About Us</a>
-                    <a href="#pillars" class="hover:text-brand-gold transition">Our Pillars</a>
-                    <a href="#initiatives" class="hover:text-brand-gold transition">Initiatives</a>
-                    <a href="#impact" class="hover:text-brand-gold transition">Impact</a>
-                    <a href="#join" class="bg-brand-gold text-brand-green px-5 py-2.5 rounded-full font-semibold hover:bg-yellow-400 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Get Involved</a>
+                <div class="flex flex-col">
+                    <span id="nav-title" class="font-bold text-lg tracking-wider text-white">LONGEVITY</span>
+                    <span id="nav-subtitle" class="text-[10px] tracking-widest text-brandMuted uppercase mono-font">Sudan Youth Charity</span>
                 </div>
+            </a>
 
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white hover:text-brand-gold focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
+            <!-- Nav Links & Lang Toggle -->
+            <div class="flex items-center gap-6">
+                <a href="#projects" id="nav-projects-link" class="text-sm text-brandMuted hover:text-white transition-colors">المشاريع</a>
+                <a href="#about" id="nav-about-link" class="text-sm text-brandMuted hover:text-white transition-colors">من نحن</a>
+                <button onclick="toggleLanguage()" class="px-3 py-1.5 border border-brandBorder text-xs mono-font hover:bg-white hover:text-black transition-all">
+                    <i class="fa-solid font-bold fa-globe mr-1"></i> <span id="lang-btn-text">EN</span>
+                </button>
             </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-green border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
-            <a href="#about" class="block py-2 text-white/80 hover:text-white">About Us</a>
-            <a href="#pillars" class="block py-2 text-white/80 hover:text-white">Our Pillars</a>
-            <a href="#initiatives" class="block py-2 text-white/80 hover:text-white">Initiatives</a>
-            <a href="#impact" class="block py-2 text-white/80 hover:text-white">Impact</a>
-            <a href="#join" class="block py-2.5 bg-brand-gold text-brand-green text-center font-semibold rounded-full">Get Involved</a>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-brand-green">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80" alt="Sudanese Youth" class="w-full h-full object-cover">
-            <div class="absolute inset-0 hero-overlay"></div>
-        </div>
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center grain-overlay border-b border-brandBorder">
+        <div class="max-w-5xl mx-auto px-6 text-center space-y-8">
+            
+            <!-- Hero Icon -->
+            <div class="inline-flex p-4 border border-brandBorder bg-brandCard rounded-full mb-2">
+                <img src="logo.png" alt="Longevity Icon" class="w-16 h-16 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/><path d=\'M75 85 L25 85 L25 65 L55 65 L55 15 L75 15 Z\'/></svg>'">
+            </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-white">
-            <div class="max-w-3xl">
-                <span class="inline-flex items-center gap-2 bg-brand-gold/20 text-brand-gold border border-brand-gold/30 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-sm">
-                    <i class="fa-solid fa-seedling"></i> Sustainable Youth Charity Sudan
-                </span>
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-                    Empowering <span class="text-gradient">Sudanese Youth</span> for a Sustainable Future
-                </h1>
-                <p class="text-lg sm:text-xl text-emerald-100/90 mb-10 leading-relaxed font-light">
-                    Building long-term resilience, digital mastery, and social entrepreneurship across Sudan. Transform today's challenges into tomorrow's opportunities.
+            <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
+                هل تريد أن تكون جزءاً من التغيير؟<br>
+                <span class="text-brandMuted font-normal">انضم إلينا اليوم ولنبنِ المستقبل معاً.</span>
+            </h1>
+
+            <p id="hero-desc" class="max-w-2xl mx-auto text-brandMuted text-base md:text-lg leading-relaxed">
+                منظمة شبابية سودانية مكرسة للتمكين التكنولوجي والنهوض بالتعليم والتنمية المستدامة في المجتمعات الأكثر احتياجاً.
+            </p>
+
+            <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+                <a href="#projects" id="hero-cta-main" class="px-8 py-4 bg-white text-black font-bold hover:bg-neutral-200 transition-all text-sm tracking-wide">
+                    استكشف مشاريعنا القادمة
+                </a>
+                <a href="https://instagram.com/longevity" target="_blank" class="px-8 py-4 border border-brandBorder text-white font-medium hover:border-white transition-all text-sm mono-font">
+                    @longevity
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUTURE PROJECTS SECTION -->
+    <section id="projects" class="py-28 border-b border-brandBorder bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-brandBorder pb-8">
+                <div>
+                    <span id="proj-subtitle" class="text-xs uppercase tracking-widest text-brandMuted mono-font">Roadmap</span>
+                    <h2 id="proj-title" class="text-3xl md:text-5xl font-bold text-white mt-2">المشاريع المستقبلية</h2>
+                </div>
+                <p id="proj-header-desc" class="text-brandMuted max-w-md mt-4 md:mt-0 text-sm">
+                    مبادراتنا المخطط لها لإحداث أثر مستدام يمتد عبر أجيال الشباب والشرائح المهمشة.
                 </p>
+            </div>
+
+            <!-- PROJECTS GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#join" class="inline-flex justify-center items-center gap-3 bg-brand-gold text-brand-green font-bold px-8 py-4 rounded-full shadow-lg hover:bg-yellow-400 transition transform hover:-translate-y-0.5">
-                        <span>Join The Movement</span>
-                        <i class="fa-solid fa-arrow-right text-sm"></i>
-                    </a>
-                    <a href="#initiatives" class="inline-flex justify-center items-center gap-3 border-2 border-white/30 hover:border-white font-semibold px-8 py-4 rounded-full transition backdrop-blur-sm">
-                        <i class="fa-solid fa-circle-play text-brand-gold"></i>
-                        <span>Explore Campaigns</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 animate-bounce hidden sm:block">
-            <i class="fa-solid fa-chevron-down text-xl"></i>
-        </div>
-    </section>
-
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80" alt="Youth Community Collaboration" class="w-full h-[450px] object-cover">
-                    </div>
-                    <div class="absolute -bottom-6 -right-6 w-64 bg-brand-green text-white p-6 rounded-2xl shadow-xl z-20 hidden sm:block">
-                        <div class="flex items-center gap-4">
-                            <div class="p-3 bg-brand-gold/20 text-brand-gold rounded-xl">
-                                <i class="fa-solid fa-infinity text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Longevity</h4>
-                                <p class="text-xs text-emerald-200">Impact that lasts generations</p>
-                            </div>
+                <!-- Project 1 -->
+                <div class="border border-brandBorder bg-brandCard p-6 flex flex-col justify-between hover:border-white/40 transition-all group">
+                    <div class="space-y-4">
+                        <div class="aspect-video w-full overflow-hidden bg-black border border-brandBorder">
+                            <img src="project1.jpg" alt="Smart Village" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop';">
                         </div>
-                    </div>
-                    <div class="absolute -top-6 -left-6 w-40 h-40 bg-brand-gold/10 rounded-full blur-2xl -z-10"></div>
-                </div>
-
-                <div>
-                    <span class="text-brand-gold font-bold text-sm tracking-wider uppercase">Our Mission & Story</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-green mt-2 mb-6 leading-tight">
-                        Rooted in Sudan, Driven by Innovation & Action
-                    </h2>
-                    <p class="text-slate-600 leading-relaxed mb-6">
-                        <strong>Longevity</strong> was established to empower Sudanese youth with modern digital, leadership, and entrepreneurship tools. We believe temporary aid isn't enough—our focus is on creating sustainable economic self-reliance and community resilience.
-                    </p>
-                    
-                    <div class="grid sm:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 shrink-0 rounded-xl bg-emerald-50 text-brand-lightgreen flex items-center justify-center font-bold text-xl">
-                                <i class="fa-solid fa-bullseye"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-brand-slate mb-1">Our Vision</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed">A resilient Sudanese youth leading local economic and social renewal.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 shrink-0 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xl">
-                                <i class="fa-solid fa-hand-holding-heart"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-brand-slate mb-1">Our Values</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed">Authenticity, continuous innovation, unity, and sustainable growth.</p>
-                            </div>
-                        </div>
+                        <span class="text-xs text-brandMuted mono-font">PROJECT // 01</span>
+                        <h3 id="p1-title" class="text-xl font-bold text-white">تمكين أطفال الهامش رقمياً (القرية الذكية)</h3>
+                        <p id="p1-desc" class="text-sm text-brandMuted leading-relaxed">
+                            إنشاء أول قرية ذكية في المناطق النائية لتمكين الأطفال من مهارات البرمجة والذكاء الاصطناعي، وتوفير أجهزة رقمية وشبكات إنترنت طاقة شمسية.
+                        </p>
                     </div>
                 </div>
+
+                <!-- Project 2 -->
+                <div class="border border-brandBorder bg-brandCard p-6 flex flex-col justify-between hover:border-white/40 transition-all group">
+                    <div class="space-y-4">
+                        <div class="aspect-video w-full overflow-hidden bg-black border border-brandBorder">
+                            <img src="project2.jpg" alt="Tech Talent Incubation" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop';">
+                        </div>
+                        <span class="text-xs text-brandMuted mono-font">PROJECT // 02</span>
+                        <h3 id="p2-title" class="text-xl font-bold text-white">حاضنة التميز التقني وقيادة الأعمال الشابة</h3>
+                        <p id="p2-desc" class="text-sm text-brandMuted leading-relaxed">
+                            تطوير الكوادر الشبابية عبر معسكرات تدريبية مكثفة في صناعة المحتوى، وإدارة المشاريع، ومهارات هندسة البرمجيات لإعداد قادة المستقبل.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="border border-brandBorder bg-brandCard p-6 flex flex-col justify-between hover:border-white/40 transition-all group">
+                    <div class="space-y-4">
+                        <div class="aspect-video w-full overflow-hidden bg-black border border-brandBorder">
+                            <img src="project3.jpg" alt="Parents Workshop" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop';">
+                        </div>
+                        <span class="text-xs text-brandMuted mono-font">PROJECT // 03</span>
+                        <h3 id="p3-title" class="text-xl font-bold text-white">ورش عمل توعوية للآباء والأمهات في المدارس</h3>
+                        <p id="p3-desc" class="text-sm text-brandMuted leading-relaxed">
+                            حملات ميدانية في المدارس لتعزيز الوعي التربوي والنفسي لدى أولياء الأمور حول كيفية التعامل مع الأطفال والتفاعل مع التكنولوجيا الحديثة.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="pillars" class="py-24 bg-brand-sand">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-brand-gold font-bold text-sm tracking-wider uppercase">Strategic Pillars</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-green mt-2">How We Drive Long-Term Change</h2>
-                <p class="text-slate-600 mt-4">Three core focus areas designed to elevate skills and rebuild community foundations.</p>
+    <!-- FOOTER -->
+    <footer class="py-12 bg-black border-t border-brandBorder text-center">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Longevity" class="w-6 h-6 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/></svg>'">
+                <span class="text-sm text-brandMuted">&copy; 2026 Longevity Sudan. جميع الحقوق محفوظة.</span>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Pillar 1 -->
-                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group hover:-translate-y-2">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-green text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-md group-hover:bg-brand-gold group-hover:text-brand-green transition">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-slate mb-3">Digital Empowerment</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Training in remote work skills, coding, AI utilization, and global freelancing platforms to unlock global income opportunities.
-                    </p>
-                    <ul class="text-xs text-slate-500 space-y-2 font-medium">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-lightgreen"></i> Remote Freelancing Academies</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-lightgreen"></i> Tech Skill Bootcamps</li>
-                    </ul>
-                </div>
-
-                <!-- Pillar 2 -->
-                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group hover:-translate-y-2">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-green text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-md group-hover:bg-brand-gold group-hover:text-brand-green transition">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-slate mb-3">Social Entrepreneurship</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Incubating youth-led small enterprises focused on renewable energy, sustainable agriculture, and community services.
-                    </p>
-                    <ul class="text-xs text-slate-500 space-y-2 font-medium">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-lightgreen"></i> Seed Micro-Grants</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-lightgreen"></i> Business Mentorship</li>
-                    </ul>
-                </div>
-
-                <!-- Pillar 3 -->
-                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group hover:-translate-y-2">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-green text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-md group-hover:bg-brand-gold group-hover:text-brand-green transition">
-                        <i class="fa-solid fa-users-gear"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-slate mb-3">Community Resilience</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Organizing grassroots youth volunteer squads to rehabilitate neighborhoods, foster unity, and maintain vital infrastructure.
-                    </p>
-                    <ul class="text-xs text-slate-500 space-y-2 font-medium">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-lightgreen"></i> Neighborhood Revitalization</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-lightgreen"></i> Volunteer Leadership Network</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="initiatives" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                <div>
-                    <span class="text-brand-gold font-bold text-sm tracking-wider uppercase">Active Content & Campaigns</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-green mt-2">The 30-Day Motivation Drive</h2>
-                </div>
-                <p class="text-slate-600 max-w-md text-sm">
-                    Delivering daily bite-sized video motivation, practical skill workshops, and inspiring stories directly across mobile platforms.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Video Item 1 -->
-                <div class="rounded-3xl overflow-hidden border border-slate-100 shadow-lg bg-white flex flex-col">
-                    <div class="relative h-48 bg-slate-800">
-                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80" alt="Video thumbnail" class="w-full h-full object-cover opacity-80">
-                        <span class="absolute top-4 left-4 bg-brand-green text-brand-gold text-xs px-3 py-1 rounded-full font-bold">Episode 01</span>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-bold text-lg text-brand-slate mb-2">Seed of Today, Forest of Tomorrow</h3>
-                            <p class="text-xs text-slate-500 mb-4">Focusing on personal agency, mindset shifts, and beginning with local resources.</p>
-                        </div>
-                        <div class="flex items-center justify-between text-xs font-semibold text-brand-green pt-4 border-t">
-                            <span><i class="fa-regular fa-clock"></i> 60 Seconds</span>
-                            <span class="text-brand-gold"><i class="fa-solid fa-fire"></i> Motivational</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video Item 2 -->
-                <div class="rounded-3xl overflow-hidden border border-slate-100 shadow-lg bg-white flex flex-col">
-                    <div class="relative h-48 bg-slate-800">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80" alt="Video thumbnail" class="w-full h-full object-cover opacity-80">
-                        <span class="absolute top-4 left-4 bg-brand-green text-brand-gold text-xs px-3 py-1 rounded-full font-bold">Episode 02</span>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-bold text-lg text-brand-slate mb-2">The 1% Daily Compound Effect</h3>
-                            <p class="text-xs text-slate-500 mb-4">Practical steps to master one digital skill every week for long-term independence.</p>
-                        </div>
-                        <div class="flex items-center justify-between text-xs font-semibold text-brand-green pt-4 border-t">
-                            <span><i class="fa-regular fa-clock"></i> 90 Seconds</span>
-                            <span class="text-brand-gold"><i class="fa-solid fa-graduation-cap"></i> Educational</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video Item 3 -->
-                <div class="rounded-3xl overflow-hidden border border-slate-100 shadow-lg bg-white flex flex-col">
-                    <div class="relative h-48 bg-slate-800">
-                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80" alt="Video thumbnail" class="w-full h-full object-cover opacity-80">
-                        <span class="absolute top-4 left-4 bg-brand-green text-brand-gold text-xs px-3 py-1 rounded-full font-bold">Episode 03</span>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-bold text-lg text-brand-slate mb-2">Building Community Capital</h3>
-                            <p class="text-xs text-slate-500 mb-4">Highlighting grassroots Sudanese projects making sustainable neighborhood improvements.</p>
-                        </div>
-                        <div class="flex items-center justify-between text-xs font-semibold text-brand-green pt-4 border-t">
-                            <span><i class="fa-regular fa-clock"></i> 2 Minutes</span>
-                            <span class="text-brand-gold"><i class="fa-solid fa-hand-holding-heart"></i> Impact</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="impact" class="py-20 bg-brand-green text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div class="text-4xl sm:text-5xl font-extrabold text-brand-gold mb-2">5,000+</div>
-                    <div class="text-xs sm:text-sm text-emerald-100 uppercase tracking-wider font-medium">Youth Targeted</div>
-                </div>
-                <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div class="text-4xl sm:text-5xl font-extrabold text-brand-gold mb-2">100+</div>
-                    <div class="text-xs sm:text-sm text-emerald-100 uppercase tracking-wider font-medium">Startups Mentored</div>
-                </div>
-                <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div class="text-4xl sm:text-5xl font-extrabold text-brand-gold mb-2">50</div>
-                    <div class="text-xs sm:text-sm text-emerald-100 uppercase tracking-wider font-medium">Local Projects</div>
-                </div>
-                <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div class="text-4xl sm:text-5xl font-extrabold text-brand-gold mb-2">30</div>
-                    <div class="text-xs sm:text-sm text-emerald-100 uppercase tracking-wider font-medium">Daily Videos</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="join" class="py-24 bg-brand-sand">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-100">
-                <div class="text-center max-w-xl mx-auto mb-10">
-                    <span class="text-brand-gold font-bold text-sm tracking-wider uppercase">Become a Partner or Volunteer</span>
-                    <h2 class="text-3xl font-extrabold text-brand-green mt-2">Join Longevity Sudan Today</h2>
-                    <p class="text-slate-600 text-sm mt-2">Fill out the brief form below to join our network as a volunteer, partner, or donor.</p>
-                </div>
-
-                <form id="volunteerForm" class="space-y-6">
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Full Name</label>
-                            <input type="text" required placeholder="e.g. Mohamed Ahmed" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Email Address</label>
-                            <input type="email" required placeholder="name@domain.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition text-sm">
-                        </div>
-                    </div>
-
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Phone / WhatsApp</label>
-                            <input type="tel" required placeholder="+249..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Role / Interest</label>
-                            <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition text-sm bg-white">
-                                <option>Volunteer Trainer</option>
-                                <option>Strategic Partner / NGO</option>
-                                <option>Content Creator</option>
-                                <option>Donor / Investor</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">How would you like to contribute?</label>
-                        <textarea rows="4" placeholder="Tell us about your background and how you can support our youth initiatives..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition text-sm"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-brand-green text-white font-bold py-4 rounded-xl hover:bg-brand-lightgreen transition shadow-lg hover:shadow-xl">
-                        Submit Application
-                    </button>
-                </form>
-
-                <div id="formSuccess" class="hidden mt-6 p-4 bg-emerald-50 text-emerald-800 rounded-xl text-center text-sm font-semibold border border-emerald-200">
-                    <i class="fa-solid fa-circle-check mr-2"></i> Thank you for registering! Our team will reach out to you shortly.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-brand-slate text-white py-16 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-10 mb-12">
-                <div class="col-span-2">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-8 h-8 rounded-lg bg-brand-gold flex items-center justify-center text-brand-green font-bold">L</div>
-                        <span class="font-bold text-xl tracking-tight">LONGEVITY<span class="text-brand-gold">.</span></span>
-                    </div>
-                    <p class="text-slate-400 text-sm max-w-sm leading-relaxed mb-6">
-                        Empowering Sudanese youth through sustainable education, digital entrepreneurship, and community resilience.
-                    </p>
-                    <div class="flex space-x-4 text-slate-400">
-                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-gold hover:text-brand-green transition"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-gold hover:text-brand-green transition"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-gold hover:text-brand-green transition"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-gold hover:text-brand-green transition"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-sm text-brand-gold uppercase tracking-wider mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#about" class="hover:text-white transition">About Us</a></li>
-                        <li><a href="#pillars" class="hover:text-white transition">Strategic Pillars</a></li>
-                        <li><a href="#initiatives" class="hover:text-white transition">30-Day Campaign</a></li>
-                        <li><a href="#join" class="hover:text-white transition">Partner With Us</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-sm text-brand-gold uppercase tracking-wider mb-4">Contact Info</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><i class="fa-solid fa-envelope mr-2 text-brand-gold"></i> info@longevitysudan.org</li>
-                        <li><i class="fa-solid fa-location-dot mr-2 text-brand-gold"></i> Port Sudan & Khartoum, Sudan</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
-                &copy; 2026 Longevity Youth Association Sudan. All rights reserved.
+            <div class="flex items-center gap-6 text-sm text-brandMuted">
+                <a href="https://instagram.com/longevity" target="_blank" class="hover:text-white transition-colors">Instagram</a>
+                <a href="#" class="hover:text-white transition-colors">GitHub</a>
             </div>
         </div>
     </footer>
 
+    <!-- LANGUAGE TOGGLE SCRIPT -->
     <script>
-        // Mobile Navigation Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        let currentLang = 'ar';
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        const translations = {
+            ar: {
+                navProjects: "المشاريع",
+                navAbout: "من نحن",
+                langBtn: "EN",
+                heroTitle: "هل تريد أن تكون جزءاً من التغيير؟<br><span class='text-brandMuted font-normal'>انضم إلينا اليوم ولنبنِ المستقبل معاً.</span>",
+                heroDesc: "منظمة شبابية سودانية مكرسة للتمكين التكنولوجي والنهوض بالتعليم والتنمية المستدامة في المجتمعات الأكثر احتياجاً.",
+                heroCta: "استكشف مشاريعنا القادمة",
+                projSubtitle: "Roadmap",
+                projTitle: "المشاريع المستقبلية",
+                projHeaderDesc: "مبادراتنا المخطط لها لإحداث أثر مستدام يمتد عبر أجيال الشباب والشرائح المهمشة.",
+                p1Title: "تمكين أطفال الهامش رقمياً (القرية الذكية)",
+                p1Desc: "إنشاء أول قرية ذكية في المناطق النائية لتمكين الأطفال من مهارات البرمجة والذكاء الاصطناعي، وتوفير أجهزة رقمية وشبكات إنترنت طاقة شمسية.",
+                p2Title: "حاضنة التميز التقني وقيادة الأعمال الشابة",
+                p2Desc: "تطوير الكوادر الشبابية عبر معسكرات تدريبية مكثفة في صناعة المحتوى، وإدارة المشاريع، ومهارات هندسة البرمجيات لإعداد قادة المستقبل.",
+                p3Title: "ورش عمل توعوية للآباء والأمهات في المدارس",
+                p3Desc: "حملات ميدانية في المدارس لتعزيز الوعي التربوي والنفسي لدى أولياء الأمور حول كيفية التعامل مع الأطفال والتفاعل مع التكنولوجيا الحديثة."
+            },
+            en: {
+                navProjects: "Projects",
+                navAbout: "About Us",
+                langBtn: "AR",
+                heroTitle: "Want to be part of the change?<br><span class='text-brandMuted font-normal'>Join us today, and let's build the future together.</span>",
+                heroDesc: "A Sudanese youth charity dedicated to digital empowerment, education advancement, and sustainable development for marginalized communities.",
+                heroCta: "Explore Future Projects",
+                projSubtitle: "Roadmap",
+                projTitle: "Future Projects",
+                projHeaderDesc: "Our planned initiatives to create sustainable impact across youth generations and underserved communities.",
+                p1Title: "Digital Empowerment for Marginalized Children (Smart Village)",
+                p1Desc: "Building the first smart village in rural areas to equip children with coding & AI skills, powered by solar internet hubs.",
+                p2Title: "Tech Talent Incubation & Youth Leadership",
+                p2Desc: "Empowering youth through intensive bootcamps in digital media, project management, and software engineering.",
+                p3Title: "Parental Awareness Workshops in Schools",
+                p3Desc: "Field campaigns in schools to guide parents on modern education, child psychology, and safe digital engagement."
+            }
+        };
 
-        // Form submission handling
-        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            this.reset();
-            const successBox = document.getElementById('formSuccess');
-            successBox.classList.remove('hidden');
-            setTimeout(() => {
-                successBox.classList.add('hidden');
-            }, 5000);
-        });
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            const t = translations[currentLang];
+            document.getElementById('nav-projects-link').innerText = t.navProjects;
+            document.getElementById('nav-about-link').innerText = t.navAbout;
+            document.getElementById('lang-btn-text').innerText = t.langBtn;
+            document.getElementById('hero-title').innerHTML = t.heroTitle;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('hero-cta-main').innerText = t.heroCta;
+            document.getElementById('proj-subtitle').innerText = t.projSubtitle;
+            document.getElementById('proj-title').innerText = t.projTitle;
+            document.getElementById('proj-header-desc').innerText = t.projHeaderDesc;
+            document.getElementById('p1-title').innerText = t.p1Title;
+            document.getElementById('p1-desc').innerText = t.p1Desc;
+            document.getElementById('p2-title').innerText = t.p2Title;
+            document.getElementById('p2-desc').innerText = t.p2Desc;
+            document.getElementById('p3-title').innerText = t.p3Title;
+            document.getElementById('p3-desc').innerText = t.p3Desc;
+        }
     </script>
 </body>
 </html>
