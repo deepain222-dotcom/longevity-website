@@ -54,10 +54,10 @@
 <body class="antialiased selection:bg-white selection:text-black">
 
     <!-- NAVIGATION BAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-brandBorder">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/85 backdrop-blur-md border-b border-brandBorder">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             
-            <!-- Brand Logo with New Geometric Emblem -->
+            <!-- Brand Logo with Geometric Emblem -->
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-10 h-10 border border-white/20 bg-black flex items-center justify-center transition-all group-hover:border-white">
                     <img src="logo.png" alt="Longevity Emblem" class="w-7 h-7 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/><path d=\'M75 85 L25 85 L25 65 L55 65 L55 15 L75 15 Z\' opacity=\'0.3\'/></svg>'">
@@ -68,22 +68,31 @@
                 </div>
             </a>
 
-            <!-- Nav Links & Lang Toggle -->
-            <div class="flex items-center gap-6">
-                <a href="#projects" id="nav-projects-link" class="text-sm text-brandMuted hover:text-white transition-colors">المشاريع</a>
-                <a href="#about" id="nav-about-link" class="text-sm text-brandMuted hover:text-white transition-colors">من نحن</a>
-                <button onclick="toggleLanguage()" class="px-3 py-1.5 border border-brandBorder text-xs mono-font hover:bg-white hover:text-black transition-all">
-                    <i class="fa-solid font-bold fa-globe mr-1"></i> <span id="lang-btn-text">EN</span>
+            <!-- Nav Links & Actions -->
+            <div class="hidden lg:flex items-center gap-6 text-xs font-semibold">
+                <a href="#about" id="nav-about" class="text-brandMuted hover:text-white transition-colors">عن الجمعية</a>
+                <a href="#pillars" id="nav-pillars" class="text-brandMuted hover:text-white transition-colors">محاورنا</a>
+                <a href="#plan" id="nav-plan" class="text-brandMuted hover:text-white transition-colors">خطة الـ 30 يوماً</a>
+                <a href="#impact" id="nav-impact" class="text-brandMuted hover:text-white transition-colors">أثرنا</a>
+                <a href="#projects" id="nav-projects" class="text-brandMuted hover:text-white transition-colors">المشاريع</a>
+                <a href="#media" id="nav-media" class="text-brandMuted hover:text-white transition-colors">المعرض</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="openDonateModal()" id="nav-donate-btn" class="px-4 py-2 bg-white text-black font-bold text-xs hover:bg-neutral-200 transition-all">
+                    تبرع الآن
+                </button>
+                <button onclick="toggleLanguage()" class="px-3 py-2 border border-brandBorder text-xs mono-font hover:bg-white hover:text-black transition-all">
+                    <i class="fa-solid fa-globe mr-1"></i> <span id="lang-btn-text">EN</span>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center grain-overlay border-b border-brandBorder">
+    <section class="relative min-h-screen pt-36 pb-20 flex items-center justify-center grain-overlay border-b border-brandBorder">
         <div class="max-w-5xl mx-auto px-6 text-center space-y-8">
             
-            <!-- Hero Icon -->
             <div class="inline-flex p-4 border border-brandBorder bg-brandCard rounded-full mb-2">
                 <img src="logo.png" alt="Longevity Icon" class="w-16 h-16 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/><path d=\'M75 85 L25 85 L25 65 L55 65 L55 15 L75 15 Z\'/></svg>'">
             </div>
@@ -108,13 +117,137 @@
         </div>
     </section>
 
-    <!-- FUTURE PROJECTS SECTION -->
-    <section id="projects" class="py-28 border-b border-brandBorder bg-black">
+    <!-- ABOUT SECTION (عن الجمعية) -->
+    <section id="about" class="py-24 border-b border-brandBorder bg-black">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span id="about-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">// ABOUT LONGEVITY</span>
+                <h2 id="about-title" class="text-3xl md:text-4xl font-bold text-white">جمعية شبابية تقود التحول المستدام في السودان</h2>
+                <p id="about-p1" class="text-brandMuted text-sm md:text-base leading-relaxed">
+                    تأسست جمعية "لونجيفيتي" برؤية شبابية طموحة تهدف إلى وضع حلول مستدامة وتكنولوجية للحد من الفجوة الرقمية والتعليمية التي تواجه الناشئة والشباب في مختلف مناطق السودان.
+                </p>
+                <p id="about-p2" class="text-brandMuted text-sm md:text-base leading-relaxed">
+                    نؤمن بأن الاستثمار في طاقات الشباب وإعادة ابتكار آليات التمكين التعليمي هو السكة الأولى نحو تحول مجتمعي كامل وطويل الأمد.
+                </p>
+            </div>
+            <div class="border border-brandBorder bg-brandCard p-8 relative">
+                <div class="absolute -top-3 -right-3 px-3 py-1 bg-white text-black text-xs font-bold mono-font">VISION 2026+</div>
+                <h3 id="about-quote-title" class="text-xl font-bold text-white mb-4">رسالتنا الأساسية</h3>
+                <blockquote id="about-quote-text" class="text-brandMuted italic text-sm leading-relaxed border-r-2 border-white pr-4">
+                    "بناء بيئة خصبة تدمج بين التفكير الابتكاري والتقنية والوعي التربوي لبناء جيل سوداني واعد ومستقل معرفياً."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE PILLARS (محاورنا) -->
+    <section id="pillars" class="py-24 border-b border-brandBorder bg-brandCard">
         <div class="max-w-7xl mx-auto px-6">
-            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span id="pillars-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">// FOUNDATIONS</span>
+                <h2 id="pillars-title" class="text-3xl font-bold text-white">محاور عملنا الرئيسية</h2>
+                <p id="pillars-desc" class="text-brandMuted text-sm">ركائز استراتيجية تعتمد عليها كافة أنشطة ومبادرات الجمعية الميدانية.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 border border-brandBorder bg-black space-y-4">
+                    <div class="w-12 h-12 border border-white/20 flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 id="pil1-title" class="text-xl font-bold text-white">التمكين الرقمي</h3>
+                    <p id="pil1-desc" class="text-brandMuted text-sm leading-relaxed">توفير البنية التحتية التكنولوجية والتعليم الرقمي للأطفال والناشئين في المناطق المهمشة.</p>
+                </div>
+
+                <div class="p-8 border border-brandBorder bg-black space-y-4">
+                    <div class="w-12 h-12 border border-white/20 flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h3 id="pil2-title" class="text-xl font-bold text-white">بناء الكوادر الشابة</h3>
+                    <p id="pil2-desc" class="text-brandMuted text-sm leading-relaxed">تأهيل الشباب وتدريبهم على مهارات القيادة، والبرمجة، وصناعة المحتوى، وإدارة المشاريع.</p>
+                </div>
+
+                <div class="p-8 border border-brandBorder bg-black space-y-4">
+                    <div class="w-12 h-12 border border-white/20 flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 id="pil3-title" class="text-xl font-bold text-white">التوعية التربوية</h3>
+                    <p id="pil3-desc" class="text-brandMuted text-sm leading-relaxed">تنمية وعي أولياء الأمور للتعامل المثالي مع متطلبات العصر الحديث والتربية الرقمية للأبناء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 30-DAY PLAN SECTION (خطة الثلاثين يوم) -->
+    <section id="plan" class="py-24 border-b border-brandBorder bg-black">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-brandBorder pb-8">
                 <div>
-                    <span id="proj-subtitle" class="text-xs uppercase tracking-widest text-brandMuted mono-font">Roadmap</span>
+                    <span id="plan-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">// IMMEDIATE ACTION</span>
+                    <h2 id="plan-title" class="text-3xl font-bold text-white mt-2">خطة الـ 30 يوماً القادمة</h2>
+                </div>
+                <p id="plan-subtitle" class="text-brandMuted text-sm max-w-md mt-4 md:mt-0">خارطة طريق تنموية مكثفة للبدء الفوري في التنفيذ الميداني.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="p-6 border border-brandBorder bg-brandCard space-y-3">
+                    <span class="text-xs text-white font-bold mono-font border-b border-white pb-1 inline-block">WEEK 01</span>
+                    <h4 id="plan-w1-t" class="font-bold text-white text-base">المسح الميداني وتحديد الاحتياجات</h4>
+                    <p id="plan-w1-d" class="text-brandMuted text-xs leading-relaxed">حصر الأسر والأطفال والمدارس المستهدفة في مناطق العمل الأولى.</p>
+                </div>
+                <div class="p-6 border border-brandBorder bg-brandCard space-y-3">
+                    <span class="text-xs text-white font-bold mono-font border-b border-white pb-1 inline-block">WEEK 02</span>
+                    <h4 id="plan-w2-t" class="font-bold text-white text-base">تجهيز المعامل والأجهزة</h4>
+                    <p id="plan-w2-d" class="text-brandMuted text-xs leading-relaxed">توفير الأجهزة الرقمية الأولى وتهيئة القاعات للقرية الذكية.</p>
+                </div>
+                <div class="p-6 border border-brandBorder bg-brandCard space-y-3">
+                    <span class="text-xs text-white font-bold mono-font border-b border-white pb-1 inline-block">WEEK 03</span>
+                    <h4 id="plan-w3-t" class="font-bold text-white text-base">إطلاق ورش المدارس الأولى</h4>
+                    <p id="plan-w3-d" class="text-brandMuted text-xs leading-relaxed">بدء أولى الدورات التوعوية لأولياء الأمور والمعلمين داخل المدارس.</p>
+                </div>
+                <div class="p-6 border border-brandBorder bg-brandCard space-y-3">
+                    <span class="text-xs text-white font-bold mono-font border-b border-white pb-1 inline-block">WEEK 04</span>
+                    <h4 id="plan-w4-t" class="font-bold text-white text-base">تقييم النتائج وإطلاق الدفعة 2</h4>
+                    <p id="plan-w4-d" class="text-brandMuted text-xs leading-relaxed">قياس الأثر المبدئي والتوسع نحو القرى والمناطق المجاورة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR IMPACT (أثرنا) -->
+    <section id="impact" class="py-24 border-b border-brandBorder bg-brandCard">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-16 space-y-2">
+                <span id="impact-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">// MEASURABLE RESULTS</span>
+                <h2 id="impact-title" class="text-3xl font-bold text-white">أثرنا الميداني بالأرقام</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6 border border-brandBorder bg-black space-y-2">
+                    <div class="text-4xl font-extrabold text-white mono-font">+1,500</div>
+                    <div id="imp-1" class="text-xs text-brandMuted uppercase tracking-wider">طفل مستفيد</div>
+                </div>
+                <div class="p-6 border border-brandBorder bg-black space-y-2">
+                    <div class="text-4xl font-extrabold text-white mono-font">25+</div>
+                    <div id="imp-2" class="text-xs text-brandMuted uppercase tracking-wider">ورشة عمل مدرسية</div>
+                </div>
+                <div class="p-6 border border-brandBorder bg-black space-y-2">
+                    <div class="text-4xl font-extrabold text-white mono-font">120+</div>
+                    <div id="imp-3" class="text-xs text-brandMuted uppercase tracking-wider">شاب متدرب</div>
+                </div>
+                <div class="p-6 border border-brandBorder bg-black space-y-2">
+                    <div class="text-4xl font-extrabold text-white mono-font">100%</div>
+                    <div id="imp-4" class="text-xs text-brandMuted uppercase tracking-wider">جهود شبابية مستقلة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUTURE PROJECTS SECTION (المشاريع المستقبلية) -->
+    <section id="projects" class="py-28 border-b border-brandBorder bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-brandBorder pb-8">
+                <div>
+                    <span id="proj-subtitle" class="text-xs uppercase tracking-widest text-brandMuted mono-font">// ROADMAP</span>
                     <h2 id="proj-title" class="text-3xl md:text-5xl font-bold text-white mt-2">المشاريع المستقبلية</h2>
                 </div>
                 <p id="proj-header-desc" class="text-brandMuted max-w-md mt-4 md:mt-0 text-sm">
@@ -122,9 +255,7 @@
                 </p>
             </div>
 
-            <!-- PROJECTS GRID -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
                 <!-- Project 1 -->
                 <div class="border border-brandBorder bg-brandCard p-6 flex flex-col justify-between hover:border-white/40 transition-all group">
                     <div class="space-y-4">
@@ -166,38 +297,136 @@
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="py-12 bg-black border-t border-brandBorder text-center">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Longevity" class="w-6 h-6 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/></svg>'">
-                <span class="text-sm text-brandMuted">&copy; 2026 Longevity Sudan. جميع الحقوق محفوظة.</span>
+    <!-- MEDIA GALLERY SECTION (معرض الفيديو) -->
+    <section id="media" class="py-24 border-b border-brandBorder bg-brandCard">
+        <div class="max-w-7xl mx-auto px-6 space-y-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-brandBorder pb-6">
+                <div>
+                    <span id="media-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">// DOCUMENTARY & MEDIA</span>
+                    <h2 id="media-title" class="text-3xl font-bold text-white mt-1">معرض الفيديوهات التوثيقية</h2>
+                </div>
             </div>
-            <div class="flex items-center gap-6 text-sm text-brandMuted">
-                <a href="https://instagram.com/longevity" target="_blank" class="hover:text-white transition-colors">Instagram</a>
-                <a href="#" class="hover:text-white transition-colors">GitHub</a>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border border-brandBorder bg-black p-4 space-y-3">
+                    <div class="aspect-video bg-neutral-900 flex items-center justify-center border border-brandBorder relative group cursor-pointer">
+                        <i class="fa-solid fa-play text-4xl text-white group-hover:scale-125 transition-transform"></i>
+                    </div>
+                    <h4 id="vid1-t" class="font-bold text-white text-base">فيلم توثيقي: أحلام أطفال الهامش</h4>
+                    <p id="vid1-d" class="text-brandMuted text-xs">نظرة عامة حول التحديات التعليمية والرقمية داخل القرى السودانية.</p>
+                </div>
+                <div class="border border-brandBorder bg-black p-4 space-y-3">
+                    <div class="aspect-video bg-neutral-900 flex items-center justify-center border border-brandBorder relative group cursor-pointer">
+                        <i class="fa-solid fa-play text-4xl text-white group-hover:scale-125 transition-transform"></i>
+                    </div>
+                    <h4 id="vid2-t" class="font-bold text-white text-base">ملخص ورش التوعية المدرسية</h4>
+                    <p id="vid2-d" class="text-brandMuted text-xs">تفاعلات الآباء والأمهات أثناء الجلسات التوعوية والتربوية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DONATION MODAL -->
+    <div id="donate-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="border border-brandBorder bg-brandCard p-8 max-w-md w-full relative space-y-6">
+            <button onclick="closeDonateModal()" class="absolute top-4 left-4 text-brandMuted hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="space-y-2">
+                <h3 id="modal-title" class="text-2xl font-bold text-white">تبرع لجمعية Longevity</h3>
+                <p id="modal-desc" class="text-brandMuted text-xs leading-relaxed">ساهم في تمكين طفل رقمياً أو تجهيز معمل حاسوب في قرية سودانية.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="p-4 border border-brandBorder bg-black">
+                    <span class="text-xs text-brandMuted block mb-1">Bank Account (بنك الخرطوم)</span>
+                    <span class="font-mono text-white text-sm">3490012 // LONGEVITY</span>
+                </div>
+                <div class="p-4 border border-brandBorder bg-black">
+                    <span class="text-xs text-brandMuted block mb-1">Crypto (USDT TRC20)</span>
+                    <span class="font-mono text-white text-xs break-all">TX9z...LongevitySudanWallet</span>
+                </div>
+            </div>
+            <button onclick="closeDonateModal()" class="w-full py-3 bg-white text-black font-bold text-xs uppercase tracking-wider">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- FOOTER & NEWSLETTER -->
+    <footer class="py-16 bg-black border-t border-brandBorder">
+        <div class="max-w-7xl mx-auto px-6 space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-brandBorder pb-12">
+                <div class="space-y-4">
+                    <h3 id="foot-news-t" class="text-xl font-bold text-white">اشترك في نشرتنا البريدية</h3>
+                    <p id="foot-news-d" class="text-brandMuted text-sm">احصل على آخر التحديثات والتقارير الميدانية الدورية.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="email" placeholder="email@example.com" class="bg-brandCard border border-brandBorder px-4 py-3 text-sm text-white w-full focus:outline-none focus:border-white">
+                    <button class="px-6 py-3 bg-white text-black font-bold text-sm whitespace-nowrap">اشتراك</button>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-brandMuted">
+                <div class="flex items-center gap-3">
+                    <img src="logo.png" alt="Longevity" class="w-6 h-6 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/></svg>'">
+                    <span>&copy; 2026 Longevity Sudan. جميع الحقوق محفوظة.</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="https://instagram.com/longevity" target="_blank" class="hover:text-white transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-white transition-colors">GitHub</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- LANGUAGE TOGGLE SCRIPT -->
+    <!-- LANGUAGE SWITCHER LOGIC -->
     <script>
         let currentLang = 'ar';
 
         const translations = {
             ar: {
+                navAbout: "عن الجمعية",
+                navPillars: "محاورنا",
+                navPlan: "خطة الـ 30 يوماً",
+                navImpact: "أثرنا",
                 navProjects: "المشاريع",
-                navAbout: "من نحن",
+                navMedia: "المعرض",
+                navDonate: "تبرع الآن",
                 langBtn: "EN",
                 heroTitle: "هل تريد أن تكون جزءاً من التغيير؟<br><span class='text-brandMuted font-normal'>انضم إلينا اليوم ولنبنِ المستقبل معاً.</span>",
                 heroDesc: "منظمة شبابية سودانية مكرسة للتمكين التكنولوجي والنهوض بالتعليم والتنمية المستدامة في المجتمعات الأكثر احتياجاً.",
                 heroCta: "استكشف مشاريعنا القادمة",
-                projSubtitle: "Roadmap",
+                aboutTitle: "جمعية شبابية تقود التحول المستدام في السودان",
+                aboutP1: "تأسست جمعية 'لونجيفيتي' برؤية شبابية طموحة تهدف إلى وضع حلول مستدامة وتكنولوجية للحد من الفجوة الرقمية والتعليمية التي تواجه الناشئة والشباب في مختلف مناطق السودان.",
+                aboutP2: "نؤمن بأن الاستثمار في طاقات الشباب وإعادة ابتكار آليات التمكين التعليمي هو السكة الأولى نحو تحول مجتمعي كامل وطويل الأمد.",
+                aboutQuoteTitle: "رسالتنا الأساسية",
+                aboutQuoteText: "\"بناء بيئة خصبة تدمج بين التفكير الابتكاري والتقنية والوعي التربوي لبناء جيل سوداني واعد ومستقل معرفياً.\"",
+                pillarsTitle: "محاور عملنا الرئيسية",
+                pillarsDesc: "ركائز استراتيجية تعتمد عليها كافة أنشطة ومبادرات الجمعية الميدانية.",
+                pil1T: "التمكين الرقمي",
+                pil1D: "توفير البنية التحتية التكنولوجية والتعليم الرقمي للأطفال والناشئين في المناطق المهمشة.",
+                pil2T: "بناء الكوادر الشابة",
+                pil2D: "تأهيل الشباب وتدريبهم على مهارات القيادة، والبرمجة، وصناعة المحتوى، وإدارة المشاريع.",
+                pil3T: "التوعية التربوية",
+                pil3D: "تنمية وعي أولياء الأمور للتعامل المثالي مع متطلبات العصر الحديث والتربية الرقمية للأبناء.",
+                planTitle: "خطة الـ 30 يوماً القادمة",
+                planSubtitle: "خارطة طريق تنموية مكثفة للبدء الفوري في التنفيذ الميداني.",
+                planW1T: "المسح الميداني وتحديد الاحتياجات",
+                planW1D: "حصر الأسر والأطفال والمدارس المستهدفة في مناطق العمل الأولى.",
+                planW2T: "تجهزة المعامل والأجهزة",
+                planW2D: "توفير الأجهزة الرقمية الأولى وتهيئة القاعات للقرية الذكية.",
+                planW3T: "إطلاق ورش المدارس الأولى",
+                planW3D: "بدء أولى الدورات التوعوية لأولياء الأمور والمعلمين داخل المدارس.",
+                planW4T: "تقييم النتائج وإطلاق الدفعة 2",
+                planW4D: "قياس الأثر المبدئي والتوسع نحو القرى والمناطق المجاورة.",
+                impactTitle: "أثرنا الميداني بالأرقام",
+                imp1: "طفل مستفيد",
+                imp2: "ورشة عمل مدرسية",
+                imp3: "شاب متدرب",
+                imp4: "جهود شبابية مستقلة",
+                projSubtitle: "// ROADMAP",
                 projTitle: "المشاريع المستقبلية",
                 projHeaderDesc: "مبادراتنا المخطط لها لإحداث أثر مستدام يمتد عبر أجيال الشباب والشرائح المهمشة.",
                 p1Title: "تمكين أطفال الهامش رقمياً (القرية الذكية)",
@@ -205,16 +434,54 @@
                 p2Title: "حاضنة التميز التقني وقيادة الأعمال الشابة",
                 p2Desc: "تطوير الكوادر الشبابية عبر معسكرات تدريبية مكثفة في صناعة المحتوى، وإدارة المشاريع، ومهارات هندسة البرمجيات لإعداد قادة المستقبل.",
                 p3Title: "ورش عمل توعوية للآباء والأمهات في المدارس",
-                p3Desc: "حملات ميدانية في المدارس لتعزيز الوعي التربوي والنفسي لدى أولياء الأمور حول كيفية التعامل مع الأطفال والتفاعل مع التكنولوجيا الحديثة."
+                p3Desc: "حملات ميدانية في المدارس لتعزيز الوعي التربوي والنفسي لدى أولياء الأمور حول كيفية التعامل مع الأطفال والتفاعل مع التكنولوجيا الحديثة.",
+                mediaTitle: "معرض الفيديوهات التوثيقية",
+                vid1T: "فيلم توثيقي: أحلام أطفال الهامش",
+                vid1D: "نظرة عامة حول التحديات التعليمية والرقمية داخل القرى السودانية.",
+                vid2T: "ملخص ورش التوعية المدرسية",
+                vid2D: "تفاعلات الآباء والأمهات أثناء الجلسات التوعوية والتربوية."
             },
             en: {
-                navProjects: "Projects",
                 navAbout: "About Us",
+                navPillars: "Pillars",
+                navPlan: "30-Day Plan",
+                navImpact: "Impact",
+                navProjects: "Projects",
+                navMedia: "Media",
+                navDonate: "Donate Now",
                 langBtn: "AR",
                 heroTitle: "Want to be part of the change?<br><span class='text-brandMuted font-normal'>Join us today, and let's build the future together.</span>",
                 heroDesc: "A Sudanese youth charity dedicated to digital empowerment, education advancement, and sustainable development for marginalized communities.",
                 heroCta: "Explore Future Projects",
-                projSubtitle: "Roadmap",
+                aboutTitle: "Youth Charity Driving Sustainable Transformation in Sudan",
+                aboutP1: "Longevity Association was established with an ambitious youth vision aiming to solve digital and educational divides facing youth and children across Sudan.",
+                aboutP2: "We believe empowering youth energy and reinventing education systems is the true path toward long-lasting community empowerment.",
+                aboutQuoteTitle: "Core Mission",
+                aboutQuoteText: "\"Building a thriving ecosystem integrating innovation, technology, and educational awareness for an independent Sudanese generation.\"",
+                pillarsTitle: "Core Strategic Pillars",
+                pillarsDesc: "Foundational pillars guiding all field activities and charity operations.",
+                pil1T: "Digital Empowerment",
+                pil1D: "Providing technological infrastructure and digital education for rural children.",
+                pil2T: "Youth Talent Incubation",
+                pil2D: "Training youth on leadership, coding, content creation, and project engineering.",
+                pil3T: "Educational Awareness",
+                pil3D: "Raising parent awareness on modern child psychology and digital parenting.",
+                planTitle: "Next 30-Day Action Plan",
+                planSubtitle: "Intense execution roadmap for immediate field startup.",
+                planW1T: "Field Survey & Need Assessment",
+                planW1D: "Mapping targeted families, children, and schools in starting regions.",
+                planW2T: "Lab Setup & Gear Deployment",
+                planW2D: "Deploying first digital hardware batch and smart village hubs.",
+                planW3T: "School Workshop Kickoff",
+                planW3D: "Launching initial awareness sessions for parents and teachers.",
+                planW4T: "Impact Review & Phase 2 Expansion",
+                planW4D: "Evaluating preliminary feedback and expanding to neighboring villages.",
+                impactTitle: "Field Impact in Numbers",
+                imp1: "Beneficiary Children",
+                imp2: "School Workshops",
+                imp3: "Youth Trainees",
+                imp4: "Independent Youth-Led",
+                projSubtitle: "// ROADMAP",
                 projTitle: "Future Projects",
                 projHeaderDesc: "Our planned initiatives to create sustainable impact across youth generations and underserved communities.",
                 p1Title: "Digital Empowerment for Marginalized Children (Smart Village)",
@@ -222,7 +489,12 @@
                 p2Title: "Tech Talent Incubation & Youth Leadership",
                 p2Desc: "Empowering youth through intensive bootcamps in digital media, project management, and software engineering.",
                 p3Title: "Parental Awareness Workshops in Schools",
-                p3Desc: "Field campaigns in schools to guide parents on modern education, child psychology, and safe digital engagement."
+                p3Desc: "Field campaigns in schools to guide parents on modern education, child psychology, and safe digital engagement.",
+                mediaTitle: "Documentary Video Gallery",
+                vid1T: "Documentary: Dreams of Rural Children",
+                vid1D: "An overview of education and tech challenges in rural Sudanese villages.",
+                vid2T: "School Awareness Workshop Highlights",
+                vid2D: "Parent engagement and educational discussions during field campaigns."
             }
         };
 
@@ -232,12 +504,51 @@
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
 
             const t = translations[currentLang];
-            document.getElementById('nav-projects-link').innerText = t.navProjects;
-            document.getElementById('nav-about-link').innerText = t.navAbout;
+            document.getElementById('nav-about').innerText = t.navAbout;
+            document.getElementById('nav-pillars').innerText = t.navPillars;
+            document.getElementById('nav-plan').innerText = t.navPlan;
+            document.getElementById('nav-impact').innerText = t.navImpact;
+            document.getElementById('nav-projects').innerText = t.navProjects;
+            document.getElementById('nav-media').innerText = t.navMedia;
+            document.getElementById('nav-donate-btn').innerText = t.navDonate;
             document.getElementById('lang-btn-text').innerText = t.langBtn;
+            
             document.getElementById('hero-title').innerHTML = t.heroTitle;
             document.getElementById('hero-desc').innerText = t.heroDesc;
             document.getElementById('hero-cta-main').innerText = t.heroCta;
+
+            document.getElementById('about-title').innerText = t.aboutTitle;
+            document.getElementById('about-p1').innerText = t.aboutP1;
+            document.getElementById('about-p2').innerText = t.aboutP2;
+            document.getElementById('about-quote-title').innerText = t.aboutQuoteTitle;
+            document.getElementById('about-quote-text').innerText = t.aboutQuoteText;
+
+            document.getElementById('pillars-title').innerText = t.pillarsTitle;
+            document.getElementById('pillars-desc').innerText = t.pillarsDesc;
+            document.getElementById('pil1-title').innerText = t.pil1T;
+            document.getElementById('pil1-desc').innerText = t.pil1D;
+            document.getElementById('pil2-title').innerText = t.pil2T;
+            document.getElementById('pil2-desc').innerText = t.pil2D;
+            document.getElementById('pil3-title').innerText = t.pil3T;
+            document.getElementById('pil3-desc').innerText = t.pil3D;
+
+            document.getElementById('plan-title').innerText = t.planTitle;
+            document.getElementById('plan-subtitle').innerText = t.planSubtitle;
+            document.getElementById('plan-w1-t').innerText = t.planW1T;
+            document.getElementById('plan-w1-d').innerText = t.planW1D;
+            document.getElementById('plan-w2-t').innerText = t.planW2T;
+            document.getElementById('plan-w2-d').innerText = t.planW2D;
+            document.getElementById('plan-w3-t').innerText = t.planW3T;
+            document.getElementById('plan-w3-d').innerText = t.planW3D;
+            document.getElementById('plan-w4-t').innerText = t.planW4T;
+            document.getElementById('plan-w4-d').innerText = t.planW4D;
+
+            document.getElementById('impact-title').innerText = t.impactTitle;
+            document.getElementById('imp-1').innerText = t.imp1;
+            document.getElementById('imp-2').innerText = t.imp2;
+            document.getElementById('imp-3').innerText = t.imp3;
+            document.getElementById('imp-4').innerText = t.imp4;
+
             document.getElementById('proj-subtitle').innerText = t.projSubtitle;
             document.getElementById('proj-title').innerText = t.projTitle;
             document.getElementById('proj-header-desc').innerText = t.projHeaderDesc;
@@ -247,6 +558,20 @@
             document.getElementById('p2-desc').innerText = t.p2Desc;
             document.getElementById('p3-title').innerText = t.p3Title;
             document.getElementById('p3-desc').innerText = t.p3Desc;
+
+            document.getElementById('media-title').innerText = t.mediaTitle;
+            document.getElementById('vid1-t').innerText = t.vid1T;
+            document.getElementById('vid1-d').innerText = t.vid1D;
+            document.getElementById('vid2-t').innerText = t.vid2T;
+            document.getElementById('vid2-d').innerText = t.vid2D;
+        }
+
+        function openDonateModal() {
+            document.getElementById('donate-modal').classList.remove('hidden');
+        }
+
+        function closeDonateModal() {
+            document.getElementById('donate-modal').classList.add('hidden');
         }
     </script>
 </body>
