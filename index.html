@@ -8,8 +8,8 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Google Fonts: Cairo & Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +22,8 @@
                 extend: {
                     colors: {
                         brandBg: '#050505',
-                        brandCard: '#0f0f0f',
-                        brandBorder: '#222222',
+                        brandCard: 'rgba(15, 15, 15, 0.7)',
+                        brandBorder: 'rgba(255, 255, 255, 0.12)',
                         brandText: '#f5f5f5',
                         brandMuted: '#888888',
                     },
@@ -45,16 +45,30 @@
         .mono-font {
             font-family: 'Space Grotesk', sans-serif;
         }
-        .grain-overlay {
-            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
-            background-size: 24px 24px;
+        .blueprint-grid {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .glass-card {
+            background: rgba(12, 12, 12, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-white selection:text-black">
+<body class="antialiased blueprint-grid selection:bg-white selection:text-black">
+
+    <!-- SCROLL PROGRESS BAR -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] bg-white z-[60] transition-all duration-150" style="width: 0%;"></div>
 
     <!-- NAVIGATION BAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-brandBorder">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             
             <!-- Brand Logo -->
@@ -81,8 +95,9 @@
 
             <!-- CTA & Lang Toggle -->
             <div class="flex items-center gap-4">
-                <button onclick="toggleLanguage()" class="px-3 py-1.5 border border-brandBorder text-xs mono-font hover:bg-white hover:text-black transition-all">
-                    <i class="fa-solid fa-globe mr-1"></i> <span id="lang-btn-text">EN</span>
+                <button onclick="toggleLanguage()" class="px-3 py-1.5 border border-white/20 text-xs mono-font hover:bg-white hover:text-black transition-all flex items-center gap-1.5">
+                    <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                    <span id="lang-btn-text">EN</span>
                 </button>
                 <button onclick="openDonateModal()" id="nav-donate-btn" class="px-4 py-2 bg-white text-black text-xs font-bold hover:bg-neutral-200 transition-all">
                     ادعمنا
@@ -92,9 +107,9 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center grain-overlay border-b border-brandBorder">
+    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center border-b border-white/10">
         <div class="max-w-5xl mx-auto px-6 text-center space-y-8">
-            <div class="inline-flex p-4 border border-brandBorder bg-brandCard rounded-full mb-2">
+            <div class="inline-flex p-4 border border-white/20 bg-black/60 backdrop-blur-md rounded-full mb-2 shadow-2xl">
                 <img src="logo.png" alt="Longevity Icon" class="w-16 h-16 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/><path d=\'M75 85 L25 85 L25 65 L55 65 L55 15 L75 15 Z\'/></svg>'">
             </div>
 
@@ -111,7 +126,7 @@
                 <a href="#projects" id="hero-cta-main" class="px-8 py-4 bg-white text-black font-bold hover:bg-neutral-200 transition-all text-sm tracking-wide">
                     استكشف مشاريعنا القادمة
                 </a>
-                <button onclick="openDonateModal()" id="hero-cta-secondary" class="px-8 py-4 border border-brandBorder text-white font-medium hover:border-white transition-all text-sm">
+                <button onclick="openDonateModal()" id="hero-cta-secondary" class="px-8 py-4 border border-white/20 text-white font-medium hover:border-white transition-all text-sm glass-card">
                     تبرع الآن
                 </button>
             </div>
@@ -119,7 +134,7 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="py-24 border-b border-brandBorder bg-black">
+    <section id="about" class="py-24 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
@@ -132,13 +147,17 @@
                         نؤمن بأن الاستثمار في طاقات الشباب وأطفال المناطق المهمشة هو الحجر الأساس لبناء مجتمع معرفي قادر على الصمود والنمو الذاتي.
                     </p>
                 </div>
-                <div class="p-8 border border-brandBorder bg-brandCard space-y-6">
-                    <div class="border-b border-brandBorder pb-4">
-                        <h4 id="vision-title" class="text-lg font-bold text-white mb-2"><i class="fa-solid fa-eye mr-2"></i> رؤيتنا</h4>
+                <div class="p-8 glass-card space-y-6">
+                    <div class="border-b border-white/10 pb-4">
+                        <h4 id="vision-title" class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="eye" class="w-5 h-5"></i> رؤيتنا
+                        </h4>
                         <p id="vision-desc" class="text-sm text-brandMuted">مجتمعات سودانية مُمكّنة تقنياً وقادرة على الابتكار والاستدامة بدون قيود جغرافية.</p>
                     </div>
                     <div>
-                        <h4 id="mission-title" class="text-lg font-bold text-white mb-2"><i class="fa-solid fa-bullseye mr-2"></i> رسالتنا</h4>
+                        <h4 id="mission-title" class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="target" class="w-5 h-5"></i> رسالتنا
+                        </h4>
                         <p id="mission-desc" class="text-sm text-brandMuted">تقديم برامج تعليمية وتكنولوجية نوعية للشباب والأطفال وتوفير بيئات حاضنة للإبداع والقيادة.</p>
                     </div>
                 </div>
@@ -147,14 +166,12 @@
     </section>
 
     <!-- FOUNDER'S SPACE -->
-    <section id="founder" class="py-24 border-b border-brandBorder bg-brandBg">
+    <section id="founder" class="py-24 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row gap-12 items-center">
-                
-                <!-- Founder Avatar / Emblem -->
                 <div class="w-full md:w-1/3 flex flex-col items-center text-center">
-                    <div class="w-48 h-48 border-2 border-white p-2 bg-black mb-6">
-                        <div class="w-full h-full bg-brandCard border border-brandBorder flex items-center justify-center p-4">
+                    <div class="w-48 h-48 border-2 border-white p-2 bg-black mb-6 shadow-2xl">
+                        <div class="w-full h-full bg-black border border-white/20 flex items-center justify-center p-4">
                             <img src="logo.png" alt="Deemar Alfred" class="w-24 h-24 object-contain filter grayscale contrast-125" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/></svg>'">
                         </div>
                     </div>
@@ -162,49 +179,53 @@
                     <p id="founder-title" class="text-sm text-brandMuted mono-font uppercase mt-1">Deemar Alfred | Founder & Director</p>
                 </div>
 
-                <!-- Founder Bio -->
                 <div class="w-full md:w-2/3 space-y-6">
                     <span id="founder-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">Founder's Space</span>
                     <h2 id="founder-heading" class="text-3xl md:text-4xl font-bold text-white">رؤية القيادة وفلسفة الأثر</h2>
                     <p id="founder-bio" class="text-brandMuted text-base leading-relaxed">
                         يقود **ديمر الفرد** جمعية "لونجيفيتي" برؤية ترتكز على إحداث نقلة نوعية في مفهوم العمل الخيري الشبابي في السودان، متحوّلاً من الإغاثة المؤقتة إلى التمكين المستدام القائم على التقنية والمعرفة.
                     </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-brandBorder">
-                        <div class="p-4 border border-brandBorder bg-brandCard">
-                            <h4 id="f-p1-t" class="font-bold text-white text-sm mb-1">الاستدامة والابتكار</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                        <div class="p-4 glass-card">
+                            <h4 id="f-p1-t" class="font-bold text-white text-sm mb-1 flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4"></i> الاستدامة والابتكار</h4>
                             <p id="f-p1-d" class="text-xs text-brandMuted">بناء حلول تقنية طويلة الأجل تصنع فرقاً حقيقياً في حياة المجتمعات المحلية.</p>
                         </div>
-                        <div class="p-4 border border-brandBorder bg-brandCard">
-                            <h4 id="f-p2-t" class="font-bold text-white text-sm mb-1">التمكين الرقمي</h4>
+                        <div class="p-4 glass-card">
+                            <h4 id="f-p2-t" class="font-bold text-white text-sm mb-1 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> التمكين الرقمي</h4>
                             <p id="f-p2-d" class="text-xs text-brandMuted">إتاحة معارف الذكاء الاصطناعي والتكنولوجيا لأطفال وشباب المناطق المهمشة.</p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- CORE PILLARS -->
-    <section id="pillars" class="py-24 border-b border-brandBorder bg-black">
+    <section id="pillars" class="py-24 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span id="pillars-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">Core Pillars</span>
                 <h2 id="pillars-title" class="text-3xl md:text-5xl font-bold text-white mt-2">محاور عملنا الرئيسية</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 border border-brandBorder bg-brandCard hover:border-white transition-all space-y-4">
-                    <div class="text-3xl text-white"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="p-8 glass-card space-y-4">
+                    <div class="w-12 h-12 border border-white/20 flex items-center justify-center text-white bg-black/40">
+                        <i data-lucide="laptop" class="w-6 h-6"></i>
+                    </div>
                     <h3 id="pil1-t" class="text-xl font-bold text-white">التمكين الرقمي</h3>
                     <p id="pil1-d" class="text-sm text-brandMuted leading-relaxed">تعليم مهارات الحاسوب، البرمجة، والتقنيات الحديثة لأطفال وشباب المجتمعات الأقل حظاً.</p>
                 </div>
-                <div class="p-8 border border-brandBorder bg-brandCard hover:border-white transition-all space-y-4">
-                    <div class="text-3xl text-white"><i class="fa-solid fa-user-graduate"></i></div>
+                <div class="p-8 glass-card space-y-4">
+                    <div class="w-12 h-12 border border-white/20 flex items-center justify-center text-white bg-black/40">
+                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    </div>
                     <h3 id="pil2-t" class="text-xl font-bold text-white">تطوير الكوادر الشبابية</h3>
                     <p id="pil2-d" class="text-sm text-brandMuted leading-relaxed">توفير برامج تدريبية وتأهيلية في صناعة المحتوى، القيادة، وإدارة المبادرات التنموية.</p>
                 </div>
-                <div class="p-8 border border-brandBorder bg-brandCard hover:border-white transition-all space-y-4">
-                    <div class="text-3xl text-white"><i class="fa-solid fa-people-roof"></i></div>
+                <div class="p-8 glass-card space-y-4">
+                    <div class="w-12 h-12 border border-white/20 flex items-center justify-center text-white bg-black/40">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
                     <h3 id="pil3-t" class="text-xl font-bold text-white">التوعية المجتمعية والتربوية</h3>
                     <p id="pil3-d" class="text-sm text-brandMuted leading-relaxed">إقامة ورش عمل ومؤتمرات في المدارس لتوعية أولياء الأمور والآباء بأساليب التربية الحديثة.</p>
                 </div>
@@ -213,29 +234,29 @@
     </section>
 
     <!-- 30-DAY PLAN SECTION -->
-    <section id="plan" class="py-24 border-b border-brandBorder bg-brandBg">
+    <section id="plan" class="py-24 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span id="plan-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">Execution Plan</span>
                 <h2 id="plan-title" class="text-3xl md:text-5xl font-bold text-white mt-2">خطة الـ 30 يوماً القادمة</h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="p-6 border border-brandBorder bg-brandCard space-y-3">
+                <div class="p-6 glass-card space-y-3">
                     <span class="text-xs text-brandMuted mono-font">WEEK 01</span>
                     <h4 id="w1-t" class="font-bold text-white">البنية التحتية والمنصات</h4>
                     <p id="w1-d" class="text-xs text-brandMuted leading-relaxed">إطلاق الموقع الإلكتروني، تدشين القنوات الرقمية، وتجهيز الهوية البصرية الرسمية.</p>
                 </div>
-                <div class="p-6 border border-brandBorder bg-brandCard space-y-3">
+                <div class="p-6 glass-card space-y-3">
                     <span class="text-xs text-brandMuted mono-font">WEEK 02</span>
                     <h4 id="w2-t" class="font-bold text-white">صناعة المحتوى التوعوي</h4>
                     <p id="w2-d" class="text-xs text-brandMuted leading-relaxed">إنتاج نشرات وبودكاست ومقاطع مرئية تحفيزية للشباب والطلاب.</p>
                 </div>
-                <div class="p-6 border border-brandBorder bg-brandCard space-y-3">
+                <div class="p-6 glass-card space-y-3">
                     <span class="text-xs text-brandMuted mono-font">WEEK 03</span>
                     <h4 id="w3-t" class="font-bold text-white">النزول الميداني والورش</h4>
                     <p id="w3-d" class="text-xs text-brandMuted leading-relaxed">عقد أولى ورش العمل في المدارس والتواصل المباشر مع أولياء الأمور.</p>
                 </div>
-                <div class="p-6 border border-brandBorder bg-brandCard space-y-3">
+                <div class="p-6 glass-card space-y-3">
                     <span class="text-xs text-brandMuted mono-font">WEEK 04</span>
                     <h4 id="w4-t" class="font-bold text-white">تقييم الأثر والشراكات</h4>
                     <p id="w4-d" class="text-xs text-brandMuted leading-relaxed">تحليل نتائج المرحلة الأولى وبناء شراكات مع المؤسسات الداعمة للتوسع.</p>
@@ -245,7 +266,7 @@
     </section>
 
     <!-- IMPACT METRICS -->
-    <section id="impact" class="py-20 border-b border-brandBorder bg-black">
+    <section id="impact" class="py-20 border-b border-white/10 bg-black/40">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div class="space-y-2">
                 <span class="text-4xl md:text-5xl font-extrabold text-white mono-font">+500</span>
@@ -267,9 +288,9 @@
     </section>
 
     <!-- FUTURE PROJECTS -->
-    <section id="projects" class="py-28 border-b border-brandBorder bg-brandBg">
+    <section id="projects" class="py-28 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-brandBorder pb-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/10 pb-8">
                 <div>
                     <span id="proj-subtitle" class="text-xs uppercase tracking-widest text-brandMuted mono-font">Roadmap</span>
                     <h2 id="proj-title" class="text-3xl md:text-5xl font-bold text-white mt-2">المشاريع المستقبلية</h2>
@@ -281,9 +302,9 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="border border-brandBorder bg-brandCard p-6 flex flex-col justify-between hover:border-white transition-all group">
+                <div class="glass-card p-6 flex flex-col justify-between group">
                     <div class="space-y-4">
-                        <div class="aspect-video w-full overflow-hidden bg-black border border-brandBorder">
+                        <div class="aspect-video w-full overflow-hidden bg-black border border-white/10 relative">
                             <img src="project1.jpg" alt="Smart Village" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop';">
                         </div>
                         <span class="text-xs text-brandMuted mono-font">PROJECT // 01</span>
@@ -295,9 +316,9 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="border border-brandBorder bg-brandCard p-6 flex flex-col justify-between hover:border-white transition-all group">
+                <div class="glass-card p-6 flex flex-col justify-between group">
                     <div class="space-y-4">
-                        <div class="aspect-video w-full overflow-hidden bg-black border border-brandBorder">
+                        <div class="aspect-video w-full overflow-hidden bg-black border border-white/10 relative">
                             <img src="project2.jpg" alt="Tech Talent Incubation" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop';">
                         </div>
                         <span class="text-xs text-brandMuted mono-font">PROJECT // 02</span>
@@ -309,9 +330,9 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="border border-brandBorder bg-brandCard p-6 flex flex-col justify-between hover:border-white transition-all group">
+                <div class="glass-card p-6 flex flex-col justify-between group">
                     <div class="space-y-4">
-                        <div class="aspect-video w-full overflow-hidden bg-black border border-brandBorder">
+                        <div class="aspect-video w-full overflow-hidden bg-black border border-white/10 relative">
                             <img src="project3.jpg" alt="Parents Workshop" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop';">
                         </div>
                         <span class="text-xs text-brandMuted mono-font">PROJECT // 03</span>
@@ -326,20 +347,20 @@
     </section>
 
     <!-- MEDIA GALLERY -->
-    <section id="media" class="py-24 border-b border-brandBorder bg-black">
+    <section id="media" class="py-24 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <span id="media-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">Media & Visuals</span>
             <h2 id="media-title" class="text-3xl md:text-5xl font-bold text-white mt-2 mb-12">معرض الفيديوهات والتوثيق</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="border border-brandBorder bg-brandCard p-4">
-                    <div class="aspect-video bg-neutral-900 border border-brandBorder flex items-center justify-center">
-                        <i class="fa-solid fa-circle-play text-5xl text-white/40 hover:text-white transition-all cursor-pointer"></i>
+                <div class="glass-card p-4 text-right">
+                    <div class="aspect-video bg-black border border-white/10 flex items-center justify-center relative group cursor-pointer">
+                        <i data-lucide="play-circle" class="w-16 h-16 text-white/50 group-hover:text-white group-hover:scale-110 transition-all"></i>
                     </div>
                     <p id="vid1-t" class="text-sm font-bold text-white mt-4">فيديو توثيقي: رؤية Longevity ورسالتها للشباب</p>
                 </div>
-                <div class="border border-brandBorder bg-brandCard p-4">
-                    <div class="aspect-video bg-neutral-900 border border-brandBorder flex items-center justify-center">
-                        <i class="fa-solid fa-circle-play text-5xl text-white/40 hover:text-white transition-all cursor-pointer"></i>
+                <div class="glass-card p-4 text-right">
+                    <div class="aspect-video bg-black border border-white/10 flex items-center justify-center relative group cursor-pointer">
+                        <i data-lucide="play-circle" class="w-16 h-16 text-white/50 group-hover:text-white group-hover:scale-110 transition-all"></i>
                     </div>
                     <p id="vid2-t" class="text-sm font-bold text-white mt-4">ملخص ورشة العمل الميدانية الأولى للآباء والطلاب</p>
                 </div>
@@ -348,7 +369,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-12 bg-black border-t border-brandBorder text-center">
+    <footer class="py-12 bg-black/80 border-t border-white/10 text-center">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="Longevity" class="w-6 h-6 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/></svg>'">
@@ -361,18 +382,30 @@
         </div>
     </footer>
 
-    <!-- DONATE MODAL -->
-    <div id="donateModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-brandCard border border-white max-w-md w-full p-8 relative space-y-6">
-            <button onclick="closeDonateModal()" class="absolute top-4 right-4 text-brandMuted hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+    <!-- DONATE MODAL WITH SPONSORSHIP TIERS -->
+    <div id="donateModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-card max-w-lg w-full p-8 relative space-y-6 text-right">
+            <button onclick="closeDonateModal()" class="absolute top-4 left-4 text-brandMuted hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h3 id="modal-donate-t" class="text-2xl font-bold text-white">ادعم جمعية Longevity</h3>
             <p id="modal-donate-d" class="text-sm text-brandMuted">تبرعك يساهم مباشرة في توفير الأجهزة الرقمية وإقامة الورش التعليمية للأطفال والشباب.</p>
+            
             <div class="space-y-3">
-                <div class="p-3 border border-brandBorder bg-black flex justify-between items-center text-xs mono-font">
+                <button class="w-full p-3 border border-white/20 bg-black/40 hover:border-white transition-all text-right flex justify-between items-center text-xs">
+                    <span class="font-bold text-white">كفالة طفل رقمياً (شهر)</span>
+                    <span class="mono-font text-brandMuted">$25 / 15,000 SDG</span>
+                </button>
+                <button class="w-full p-3 border border-white/20 bg-black/40 hover:border-white transition-all text-right flex justify-between items-center text-xs">
+                    <span class="font-bold text-white">تجهيز جهاز محمول للقرية الذكية</span>
+                    <span class="mono-font text-brandMuted">$150 / 90,000 SDG</span>
+                </button>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-white/10">
+                <div class="p-3 border border-white/10 bg-black/60 flex justify-between items-center text-xs mono-font">
                     <span class="text-brandMuted">Bank Account:</span>
                     <span class="text-white font-bold">1234-5678-9012</span>
                 </div>
-                <div class="p-3 border border-brandBorder bg-black flex justify-between items-center text-xs mono-font">
+                <div class="p-3 border border-white/10 bg-black/60 flex justify-between items-center text-xs mono-font">
                     <span class="text-brandMuted">PayPal / Crypto:</span>
                     <span class="text-white font-bold">donate@longevitysudan.org</span>
                 </div>
@@ -381,8 +414,19 @@
         </div>
     </div>
 
-    <!-- LANGUAGE SWITCH SCRIPT -->
+    <!-- SCRIPTS -->
     <script>
+        // Lucide Icons Init
+        lucide.createIcons();
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+
         let currentLang = 'ar';
 
         const translations = {
@@ -395,8 +439,8 @@
                 aboutTag: "About Longevity", aboutTitle: "منظمة شبابية لبناء مستقبل مستدام",
                 aboutD1: "تأسست جمعية \"لونجيفيتي\" (Longevity) برؤية شبابية سودانية طموحة تهدف إلى تسخير حلول التكنولوجيا والابتكار الرقمي لمعالجة التحديات التنموية والتعليمية في السودان.",
                 aboutD2: "نؤمن بأن الاستثمار في طاقات الشباب وأطفال المناطق المهمشة هو الحجر الأساس لبناء مجتمع معرفي قادر على الصمود والنمو الذاتي.",
-                visT: "<i class='fa-solid fa-eye mr-2'></i> رؤيتنا", visD: "مجتمعات سودانية مُمكّنة تقنياً وقادرة على الابتكار والاستدامة بدون قيود جغرافية.",
-                misT: "<i class='fa-solid fa-bullseye mr-2'></i> رسالتنا", misD: "تقديم برامج تعليمية وتكنولوجية نوعية للشباب والأطفال وتوفير بيئات حاضنة للإبداع والقيادة.",
+                visT: "<i data-lucide='eye' class='w-5 h-5'></i> رؤيتنا", visD: "مجتمعات سودانية مُمكّنة تقنياً وقادرة على الابتكار والاستدامة بدون قيود جغرافية.",
+                misT: "<i data-lucide='target' class='w-5 h-5'></i> رسالتنا", misD: "تقديم برامج تعليمية وتكنولوجية نوعية للشباب والأطفال وتوفير بيئات حاضنة للإبداع والقيادة.",
                 fTag: "Founder's Space", fHead: "رؤية القيادة وفلسفة الأثر", fBio: "يقود ديمر الفرد جمعية \"لونجيفيتي\" برؤية ترتكز على إحداث نقلة نوعية في مفهوم العمل الخيري الشبابي في السودان، متحوّلاً من الإغاثة المؤقتة إلى التمكين المستدام القائم على التقنية والمعرفة.",
                 pilTag: "Core Pillars", pilTitle: "محاور عملنا الرئيسية",
                 pil1T: "التمكين الرقمي", pil1D: "تعليم مهارات الحاسوب، البرمجة، والتقنيات الحديثة لأطفال وشباب المجتمعات الأقل حظاً.",
@@ -417,8 +461,8 @@
                 aboutTag: "About Longevity", aboutTitle: "A Youth Organization Building a Sustainable Future",
                 aboutD1: "Longevity was founded with an ambitious Sudanese youth vision aimed at leveraging tech and digital innovation to tackle developmental challenges in Sudan.",
                 aboutD2: "We believe that investing in youth and marginalized children is the cornerstone for building a self-sustaining knowledge society.",
-                visT: "<i class='fa-solid fa-eye mr-2'></i> Our Vision", visD: "Digitally empowered Sudanese communities capable of innovation and sustainability without geographic barriers.",
-                misT: "<i class='fa-solid fa-bullseye mr-2'></i> Our Mission", misD: "Delivering high-quality educational & tech programs for youth and children while fostering leadership environments.",
+                visT: "<i data-lucide='eye' class='w-5 h-5'></i> Our Vision", visD: "Digitally empowered Sudanese communities capable of innovation and sustainability without geographic barriers.",
+                misT: "<i data-lucide='target' class='w-5 h-5'></i> Our Mission", misD: "Delivering high-quality educational & tech programs for youth and children while fostering leadership environments.",
                 fTag: "Founder's Space", fHead: "Leadership Vision & Impact Philosophy", fBio: "Deemar Alfred leads Longevity with a vision focused on transforming youth charity in Sudan from temporary relief to tech-driven sustainable empowerment.",
                 pilTag: "Core Pillars", pilTitle: "Our Strategic Pillars",
                 pil1T: "Digital Empowerment", pil1D: "Teaching computer literacy, programming, and tech skills to underserved children and youth.",
@@ -486,6 +530,8 @@
             document.getElementById('p2-desc').innerText = t.p2Desc;
             document.getElementById('p3-title').innerText = t.p3Title;
             document.getElementById('p3-desc').innerText = t.p3Desc;
+
+            lucide.createIcons();
         }
 
         function openDonateModal() {
