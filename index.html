@@ -369,7 +369,7 @@
         </div>
     </section>
 
-    <!-- CONTACT & OFFICIAL SOCIAL MEDIA SECTION WITH WHATSAPP COMMUNITY LINK -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="py-24 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -380,7 +380,6 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 
-                <!-- Contact Info & Verified Social Links -->
                 <div class="lg:col-span-5 space-y-8">
                     <div class="glass-card p-6 space-y-6">
                         <h3 id="c-info-title" class="text-xl font-bold text-white border-b border-white/10 pb-3">قنوات التواصل المباشر</h3>
@@ -412,19 +411,18 @@
                             <div>
                                 <h4 id="c-phone-t" class="text-xs text-brandMuted uppercase mono-font">مجتمع واتساب الرسمي</h4>
                                 <a href="https://chat.whatsapp.com/BQfKeVmIRBqCjPBCkg49ZM" target="_blank" class="text-sm font-bold text-white hover:underline mono-font flex items-center gap-1 mt-0.5">
-                                    انضم لمجموعتنا على واتساب <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                    <span id="c-wa-link-text">انضم لمجموعتنا على واتساب</span> <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Verified Social Media Links Including WhatsApp Community -->
                     <div class="space-y-3">
                         <h4 id="c-social-title" class="text-xs uppercase tracking-widest text-brandMuted mono-font">تابعنا على المنصات الرسمية</h4>
                         <div class="grid grid-cols-2 sm:grid-cols-2 gap-3">
                             <a href="https://chat.whatsapp.com/BQfKeVmIRBqCjPBCkg49ZM" target="_blank" class="p-3 glass-card flex items-center justify-center gap-2 hover:border-white transition-all bg-white/5">
                                 <i data-lucide="message-circle" class="w-4 h-4 text-white"></i>
-                                <span class="text-xs font-bold text-white">مجتمع WhatsApp</span>
+                                <span id="social-wa-btn" class="text-xs font-bold text-white">مجتمع WhatsApp</span>
                             </a>
                             <a href="https://www.instagram.com/longevity_sudan?srtk=aWVidDBrZWR5aWN4&utm_source=qr" target="_blank" class="p-3 glass-card flex items-center justify-center gap-2 hover:border-white transition-all">
                                 <i data-lucide="instagram" class="w-4 h-4 text-white"></i>
@@ -442,7 +440,6 @@
                     </div>
                 </div>
 
-                <!-- Form Container -->
                 <div class="lg:col-span-7">
                     <form onsubmit="handleFormSubmit(event)" class="glass-card p-8 space-y-6 text-right">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -484,7 +481,7 @@
         </div>
     </section>
 
-    <!-- FOOTER WITH ALL OFFICIAL SOCIAL & COMMUNITY LINKS -->
+    <!-- FOOTER -->
     <footer class="py-12 bg-black/80 border-t border-white/10 text-center">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
@@ -500,7 +497,7 @@
         </div>
     </footer>
 
-    <!-- DONATE MODAL WITH SPONSORSHIP TIERS -->
+    <!-- DONATE MODAL -->
     <div id="donateModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="glass-card max-w-lg w-full p-8 relative space-y-6 text-right">
             <button onclick="closeDonateModal()" class="absolute top-4 left-4 text-brandMuted hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
@@ -532,7 +529,7 @@
         </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- COMPLETE TRANSLATION SCRIPT -->
     <script>
         lucide.createIcons();
 
@@ -587,6 +584,7 @@
                 cTag: "Get in Touch", cTitle: "تواصل معنا وانضم لرؤيتنا", cSub: "سواء كنت ترغب في التطوع، الشراكة، أو الاستفسار عن برامجنا، يسعدنا التحدث إليك.",
                 cInfoTitle: "قنوات التواصل المباشر", cEmailT: "البريد الإلكتروني الرسمي", cLocT: "المقر والانتشار", cLocD: "السودان - الخرطوم / مراكز التدريب الميدانية",
                 cPhoneT: "مجتمع واتساب الرسمي", cSocialTitle: "تابعنا على المنصات الرسمية",
+                cWaLinkText: "انضم لمجموعتنا على واتساب", socialWaBtn: "مجتمع WhatsApp",
                 fLabelName: "الاسم الكامل", fLabelEmail: "البريد الإلكتروني", fLabelSub: "موضوع الرسالة",
                 opt1: "استفسار عام", opt2: "الانضمام كمتطوع / متطوعة", opt3: "شراكة ومبادرات تنموية", opt4: "دعم وتبرعات",
                 fLabelMsg: "نص الرسالة", fBtnSub: "<i data-lucide='send' class='w-4 h-4'></i> إرسال الرسالة",
@@ -627,6 +625,7 @@
                 cTag: "Get in Touch", cTitle: "Contact Us & Join Our Vision", cSub: "Whether you want to volunteer, partner, or inquire about our programs, we'd love to hear from you.",
                 cInfoTitle: "Direct Communication", cEmailT: "Official Email", cLocT: "Location & Reach", cLocD: "Sudan - Khartoum / Field Training Hubs",
                 cPhoneT: "Official WhatsApp Community", cSocialTitle: "Follow Us on Official Platforms",
+                cWaLinkText: "Join our WhatsApp Group", socialWaBtn: "WhatsApp Community",
                 fLabelName: "Full Name", fLabelEmail: "Email Address", fLabelSub: "Message Subject",
                 opt1: "General Inquiry", opt2: "Join as a Volunteer", opt3: "Partnerships & Initiatives", opt4: "Support & Donations",
                 fLabelMsg: "Your Message", fBtnSub: "<i data-lucide='send' class='w-4 h-4'></i> Send Message",
@@ -724,6 +723,8 @@
             document.getElementById('c-loc-d').innerText = t.cLocD;
             document.getElementById('c-phone-t').innerText = t.cPhoneT;
             document.getElementById('c-social-title').innerText = t.cSocialTitle;
+            document.getElementById('c-wa-link-text').innerText = t.cWaLinkText;
+            document.getElementById('social-wa-btn').innerText = t.socialWaBtn;
 
             document.getElementById('f-label-name').innerText = t.fLabelName;
             document.getElementById('f-label-email').innerText = t.fLabelEmail;
