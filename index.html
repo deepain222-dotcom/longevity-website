@@ -183,7 +183,7 @@
                     <span id="founder-tag" class="text-xs uppercase tracking-widest text-brandMuted mono-font">Founder's Space</span>
                     <h2 id="founder-heading" class="text-3xl md:text-4xl font-bold text-white">رؤية القيادة وفلسفة الأثر</h2>
                     <p id="founder-bio" class="text-brandMuted text-base leading-relaxed">
-                        يقود **ديمر الفرد** جمعية "لونجيفيتي" برؤية ترتكز على إحداث نقلة نوعية في مفهوم العمل الخيري الشبابي في السودان، متحوّلاً من الإغاثة المؤقتة إلى التمكين المستدام القائم على التقنية والمعرفة.
+                        يقود ديمر الفرد جمعية "لونجيفيتي" برؤية ترتكز على إحداث نقلة نوعية في مفهوم العمل الخيري الشبابي في السودان، متحوّلاً من الإغاثة المؤقتة إلى التمكين المستدام القائم على التقنية والمعرفة.
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
                         <div class="p-4 glass-card">
@@ -373,7 +373,7 @@
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="Longevity" class="w-6 h-6 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'white\'><path d=\'M25 15 L75 15 L75 35 L45 35 L45 85 L25 85 Z\'/></svg>'">
-                <span class="text-sm text-brandMuted">&copy; 2026 Longevity Sudan. جميع الحقوق محفوظة.</span>
+                <span id="footer-copy" class="text-sm text-brandMuted">&copy; 2026 Longevity Sudan. جميع الحقوق محفوظة.</span>
             </div>
             <div class="flex items-center gap-6 text-sm text-brandMuted">
                 <a href="https://instagram.com/longevity" target="_blank" class="hover:text-white transition-colors">Instagram</a>
@@ -391,11 +391,11 @@
             
             <div class="space-y-3">
                 <button class="w-full p-3 border border-white/20 bg-black/40 hover:border-white transition-all text-right flex justify-between items-center text-xs">
-                    <span class="font-bold text-white">كفالة طفل رقمياً (شهر)</span>
+                    <span id="tier1-t" class="font-bold text-white">كفالة طفل رقمياً (شهر)</span>
                     <span class="mono-font text-brandMuted">$25 / 15,000 SDG</span>
                 </button>
                 <button class="w-full p-3 border border-white/20 bg-black/40 hover:border-white transition-all text-right flex justify-between items-center text-xs">
-                    <span class="font-bold text-white">تجهيز جهاز محمول للقرية الذكية</span>
+                    <span id="tier2-t" class="font-bold text-white">تجهيز جهاز محمول للقرية الذكية</span>
                     <span class="mono-font text-brandMuted">$150 / 90,000 SDG</span>
                 </button>
             </div>
@@ -410,16 +410,14 @@
                     <span class="text-white font-bold">donate@longevitysudan.org</span>
                 </div>
             </div>
-            <button onclick="closeDonateModal()" class="w-full py-3 bg-white text-black font-bold text-sm hover:bg-neutral-200 transition-all">إغلاق</button>
+            <button onclick="closeDonateModal()" id="modal-close-btn" class="w-full py-3 bg-white text-black font-bold text-sm hover:bg-neutral-200 transition-all">إغلاق</button>
         </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- COMPLETE TRANSLATION & LOGIC SCRIPT -->
     <script>
-        // Lucide Icons Init
         lucide.createIcons();
 
-        // Scroll Progress Bar
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -442,15 +440,27 @@
                 visT: "<i data-lucide='eye' class='w-5 h-5'></i> رؤيتنا", visD: "مجتمعات سودانية مُمكّنة تقنياً وقادرة على الابتكار والاستدامة بدون قيود جغرافية.",
                 misT: "<i data-lucide='target' class='w-5 h-5'></i> رسالتنا", misD: "تقديم برامج تعليمية وتكنولوجية نوعية للشباب والأطفال وتوفير بيئات حاضنة للإبداع والقيادة.",
                 fTag: "Founder's Space", fHead: "رؤية القيادة وفلسفة الأثر", fBio: "يقود ديمر الفرد جمعية \"لونجيفيتي\" برؤية ترتكز على إحداث نقلة نوعية في مفهوم العمل الخيري الشبابي في السودان، متحوّلاً من الإغاثة المؤقتة إلى التمكين المستدام القائم على التقنية والمعرفة.",
+                fp1t: "<i data-lucide='zap' class='w-4 h-4'></i> الاستدامة والابتكار", fp1d: "بناء حلول تقنية طويلة الأجل تصنع فرقاً حقيقياً في حياة المجتمعات المحلية.",
+                fp2t: "<i data-lucide='cpu' class='w-4 h-4'></i> التمكين الرقمي", fp2d: "إتاحة معارف الذكاء الاصطناعي والتكنولوجيا لأطفال وشباب المناطق المهمشة.",
                 pilTag: "Core Pillars", pilTitle: "محاور عملنا الرئيسية",
                 pil1T: "التمكين الرقمي", pil1D: "تعليم مهارات الحاسوب، البرمجة، والتقنيات الحديثة لأطفال وشباب المجتمعات الأقل حظاً.",
                 pil2T: "تطوير الكوادر الشبابية", pil2D: "توفير برامج تدريبية وتأهيلية في صناعة المحتوى، القيادة، وإدارة المبادرات التنموية.",
                 pil3T: "التوعية المجتمعية والتربوية", pil3D: "إقامة ورش عمل ومؤتمرات في المدارس لتوعية أولياء الأمور والآباء بأساليب التربية الحديثة.",
                 planTag: "Execution Plan", planTitle: "خطة الـ 30 يوماً القادمة",
-                projSubtitle: "Roadmap", projTitle: "المشاريع المستقبلية",
+                w1t: "البنية التحتية والمنصات", w1d: "إطلاق الموقع الإلكتروني، تدشين القنوات الرقمية، وتجهيز الهوية البصرية الرسمية.",
+                w2t: "صناعة المحتوى التوعوي", w2d: "إنتاج نشرات وبودكاست ومقاطع مرئية تحفيزية للشباب والطلاب.",
+                w3t: "النزول الميداني والورش", w3d: "عقد أولى ورش العمل في المدارس والتواصل المباشر مع أولياء الأمور.",
+                w4t: "تقييم الأثر والشراكات", w4d: "تحليل نتائج المرحلة الأولى وبناء شراكات مع المؤسسات الداعمة للتوسع.",
+                imp1t: "مستفيد من الورش التدريبية", imp2t: "مبادرة ميدانية ومدرسية", imp3t: "متطوع ومتطوعة متفانين", imp4t: "التزام بالتنمية المستدامة",
+                projSubtitle: "Roadmap", projTitle: "المشاريع المستقبلية", projDesc: "مبادراتنا المخطط لها لإحداث أثر مستدام يمتد عبر أجيال الشباب والشرائح المهمشة.",
                 p1Title: "تمكين أطفال الهامش رقمياً (القرية الذكية)", p1Desc: "إنشاء أول قرية ذكية في المناطق النائية لتمكين الأطفال من مهارات البرمجة والذكاء الاصطناعي، وتوفير أجهزة رقمية وشبكات إنترنت طاقة شمسية.",
                 p2Title: "حاضنة التميز التقني وقيادة الأعمال الشابة", p2Desc: "تطوير الكوادر الشبابية عبر معسكرات تدريبية مكثفة في صناعة المحتوى، وإدارة المشاريع، ومهارات هندسة البرمجيات لإعداد قادة المستقبل.",
-                p3Title: "ورش عمل توعوية للآباء والأمهات في المدارس", p3Desc: "حملات ميدانية في المدارس لتعزيز الوعي التربوي والنفسي لدى أولياء الأمور حول كيفية التعامل مع الأطفال والتفاعل مع التكنولوجيا الحديثة."
+                p3Title: "ورش عمل توعوية للآباء والأمهات في المدارس", p3Desc: "حملات ميدانية في المدارس لتعزيز الوعي التربوي والنفسي لدى أولياء الأمور حول كيفية التعامل مع الأطفال والتفاعل مع التكنولوجيا الحديثة.",
+                mediaTag: "Media & Visuals", mediaTitle: "معرض الفيديوهات والتوثيق",
+                vid1t: "فيديو توثيقي: رؤية Longevity ورسالتها للشباب", vid2t: "ملخص ورشة العمل الميدانية الأولى للآباء والطلاب",
+                footerCopy: "&copy; 2026 Longevity Sudan. جميع الحقوق محفوظة.",
+                modalDonateT: "ادعم جمعية Longevity", modalDonateD: "تبرعك يساهم مباشرة في توفير الأجهزة الرقمية وإقامة الورش التعليمية للأطفال والشباب.",
+                tier1t: "كفالة طفل رقمياً (شهر)", tier2t: "تجهيز جهاز محمول للقرية الذكية", modalCloseBtn: "إغلاق"
             },
             en: {
                 navAbout: "About Us", navFounder: "Founder", navPillars: "Pillars", navPlan: "30-Day Plan",
@@ -464,15 +474,27 @@
                 visT: "<i data-lucide='eye' class='w-5 h-5'></i> Our Vision", visD: "Digitally empowered Sudanese communities capable of innovation and sustainability without geographic barriers.",
                 misT: "<i data-lucide='target' class='w-5 h-5'></i> Our Mission", misD: "Delivering high-quality educational & tech programs for youth and children while fostering leadership environments.",
                 fTag: "Founder's Space", fHead: "Leadership Vision & Impact Philosophy", fBio: "Deemar Alfred leads Longevity with a vision focused on transforming youth charity in Sudan from temporary relief to tech-driven sustainable empowerment.",
+                fp1t: "<i data-lucide='zap' class='w-4 h-4'></i> Sustainability & Innovation", fp1d: "Building long-term tech solutions that make a genuine difference in local communities.",
+                fp2t: "<i data-lucide='cpu' class='w-4 h-4'></i> Digital Empowerment", fp2d: "Providing AI and tech knowledge to children and youth in marginalized areas.",
                 pilTag: "Core Pillars", pilTitle: "Our Strategic Pillars",
                 pil1T: "Digital Empowerment", pil1D: "Teaching computer literacy, programming, and tech skills to underserved children and youth.",
                 pil2T: "Youth Talent Incubation", pil2D: "Providing intensive training in content creation, leadership, and community initiative management.",
                 pil3T: "Community & Parental Awareness", pil3D: "Hosting workshops in schools to educate parents on modern child upbringing and digital interaction.",
                 planTag: "Execution Plan", planTitle: "Next 30-Day Execution Roadmap",
-                projSubtitle: "Roadmap", projTitle: "Future Projects",
+                w1t: "Infrastructure & Platforms", w1d: "Launching the official website, activating digital channels, and preparing visual branding.",
+                w2t: "Awareness Content Creation", w2d: "Producing podcasts, newsletters, and motivational videos for youth and students.",
+                w3t: "Fieldwork & Workshops", w3d: "Hosting initial school workshops and directly engaging with parents and teachers.",
+                w4t: "Impact Assessment & Partnerships", w4d: "Analyzing initial phase results and securing partnerships with supporting organizations.",
+                imp1t: "Beneficiaries from Workshops", imp2t: "Field & School Initiatives", imp3t: "Dedicated Volunteers", imp4t: "Sustainable Commitment",
+                projSubtitle: "Roadmap", projTitle: "Future Projects", projDesc: "Our planned initiatives to create sustainable impact across youth generations and underserved communities.",
                 p1Title: "Digital Empowerment for Marginalized Children (Smart Village)", p1Desc: "Building the first smart village in rural areas to equip children with coding & AI skills, powered by solar internet hubs.",
                 p2Title: "Tech Talent Incubation & Youth Leadership", p2Desc: "Empowering youth through intensive bootcamps in digital media, project management, and software engineering.",
-                p3Title: "Parental Awareness Workshops in Schools", p3Desc: "Field campaigns in schools to guide parents on modern education, child psychology, and safe digital engagement."
+                p3Title: "Parental Awareness Workshops in Schools", p3Desc: "Field campaigns in schools to guide parents on modern education, child psychology, and safe digital engagement.",
+                mediaTag: "Media & Visuals", mediaTitle: "Video Gallery & Documentation",
+                vid1t: "Documentary: Longevity's Vision & Mission for Youth", vid2t: "Summary of the First Field Workshop for Parents & Students",
+                footerCopy: "&copy; 2026 Longevity Sudan. All Rights Reserved.",
+                modalDonateT: "Support Longevity Sudan", modalDonateD: "Your donation directly funds digital devices and educational workshops for children and youth.",
+                tier1t: "Digital Child Sponsorship (Monthly)", tier2t: "Provide a Laptop for Smart Village", modalCloseBtn: "Close"
             }
         };
 
@@ -509,6 +531,10 @@
             document.getElementById('founder-tag').innerText = t.fTag;
             document.getElementById('founder-heading').innerText = t.fHead;
             document.getElementById('founder-bio').innerText = t.fBio;
+            document.getElementById('f-p1-t').innerHTML = t.fp1t;
+            document.getElementById('f-p1-d').innerText = t.fp1d;
+            document.getElementById('f-p2-t').innerHTML = t.fp2t;
+            document.getElementById('f-p2-d').innerText = t.fp2d;
 
             document.getElementById('pillars-tag').innerText = t.pilTag;
             document.getElementById('pillars-title').innerText = t.pilTitle;
@@ -521,15 +547,41 @@
 
             document.getElementById('plan-tag').innerText = t.planTag;
             document.getElementById('plan-title').innerText = t.planTitle;
+            document.getElementById('w1-t').innerText = t.w1t;
+            document.getElementById('w1-d').innerText = t.w1d;
+            document.getElementById('w2-t').innerText = t.w2t;
+            document.getElementById('w2-d').innerText = t.w2d;
+            document.getElementById('w3-t').innerText = t.w3t;
+            document.getElementById('w3-d').innerText = t.w3d;
+            document.getElementById('w4-t').innerText = t.w4t;
+            document.getElementById('w4-d').innerText = t.w4d;
+
+            document.getElementById('imp1-t').innerText = t.imp1t;
+            document.getElementById('imp2-t').innerText = t.imp2t;
+            document.getElementById('imp3-t').innerText = t.imp3t;
+            document.getElementById('imp4-t').innerText = t.imp4t;
 
             document.getElementById('proj-subtitle').innerText = t.projSubtitle;
             document.getElementById('proj-title').innerText = t.projTitle;
+            document.getElementById('proj-header-desc').innerText = t.projDesc;
             document.getElementById('p1-title').innerText = t.p1Title;
             document.getElementById('p1-desc').innerText = t.p1Desc;
             document.getElementById('p2-title').innerText = t.p2Title;
             document.getElementById('p2-desc').innerText = t.p2Desc;
             document.getElementById('p3-title').innerText = t.p3Title;
             document.getElementById('p3-desc').innerText = t.p3Desc;
+
+            document.getElementById('media-tag').innerText = t.mediaTag;
+            document.getElementById('media-title').innerText = t.mediaTitle;
+            document.getElementById('vid1-t').innerText = t.vid1t;
+            document.getElementById('vid2-t').innerText = t.vid2t;
+
+            document.getElementById('footer-copy').innerHTML = t.footerCopy;
+            document.getElementById('modal-donate-t').innerText = t.modalDonateT;
+            document.getElementById('modal-donate-d').innerText = t.modalDonateD;
+            document.getElementById('tier1-t').innerText = t.tier1t;
+            document.getElementById('tier2-t').innerText = t.tier2t;
+            document.getElementById('modal-close-btn').innerText = t.modalCloseBtn;
 
             lucide.createIcons();
         }
