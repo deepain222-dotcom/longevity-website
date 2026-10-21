@@ -365,7 +365,7 @@
             </h3>
 
             <p class="text-gray-300 text-sm leading-relaxed" data-i18n="founder-bio">
-              يقود ديمار ألفريد منظمة Longevity Sudan برؤية ميدانية ثاقبة تهدف إلى تحويل التحديات المعقدة في السودان إلى فرص للتعلم والصمود. يركز عمله على دمقرطة الوصول إلى التقنية، وتقديم الإغاثة الذكية، وربط الشباب السوداني بالفرص العالمية.
+              يقود ديمر الفرد قديل الاعيسر منظمة Longevity Sudan برؤية ميدانية ثاقبة تهدف إلى تحويل التحديات المعقدة في السودان إلى فرص للتعلم والصمود. يركز عمله على دمقرطة الوصول إلى التقنية، وتقديم الإغاثة الذكية، وربط الشباب السوداني بالفرص العالمية.
             </p>
 
             <div class="grid sm:grid-cols-2 gap-4 pt-4">
@@ -670,33 +670,33 @@
         <!-- Interactive Contact Form -->
         <div class="lg:col-span-7">
           <div class="glass-panel rounded-2xl p-8 border border-white/15">
-            <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+            <form id="contact-form" action="https://formspree.io/f/deepain222@gmail.com" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-5">
               <h3 class="text-xl font-bold text-white mb-2" data-i18n="form-title">أرسل لنا رسالة</h3>
               
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs text-gray-400 mb-1" data-i18n="form-name">الاسم الكامل</label>
-                  <input type="text" required class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white focus:outline-none focus:border-sky-400 text-sm">
+                  <input type="text" name="name" required class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white focus:outline-none focus:border-sky-400 text-sm">
                 </div>
                 <div>
                   <label class="block text-xs text-gray-400 mb-1" data-i18n="form-email">البريد الإلكتروني</label>
-                  <input type="email" required class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white focus:outline-none focus:border-sky-400 text-sm">
+                  <input type="email" name="email" required class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white focus:outline-none focus:border-sky-400 text-sm">
                 </div>
               </div>
 
               <div>
                 <label class="block text-xs text-gray-400 mb-1" data-i18n="form-subject">موضوع الرسالة</label>
-                <select id="subject-select" class="w-full px-4 py-2.5 rounded-xl bg-black/80 border border-white/10 text-white focus:outline-none focus:border-sky-400 text-sm">
+                <select id="subject-select" name="subject" class="w-full px-4 py-2.5 rounded-xl bg-black/80 border border-white/10 text-white focus:outline-none focus:border-sky-400 text-sm">
                   <!-- Dynamic content via JavaScript translations -->
                 </select>
               </div>
 
               <div>
                 <label class="block text-xs text-gray-400 mb-1" data-i18n="form-msg">تفاصيل الرسالة</label>
-                <textarea rows="4" required class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white focus:outline-none focus:border-sky-400 text-sm"></textarea>
+                <textarea name="message" rows="4" required class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white focus:outline-none focus:border-sky-400 text-sm"></textarea>
               </div>
 
-              <button type="submit" class="w-full py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-black font-bold transition-all shadow-lg shadow-sky-500/25 flex items-center justify-center gap-2">
+              <button type="submit" id="submit-btn" class="w-full py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-black font-bold transition-all shadow-lg shadow-sky-500/25 flex items-center justify-center gap-2">
                 <i data-lucide="send" class="w-4 h-4"></i>
                 <span data-i18n="form-submit">إرسال الرسالة الآن</span>
               </button>
@@ -704,6 +704,9 @@
 
             <div id="form-success" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-sm text-center">
               <span data-i18n="form-success-msg">تم إرسال رسالتك بنجاح! وسيتواصل معك فريقنا في أقرب وقت.</span>
+            </div>
+            <div id="form-error" class="hidden mt-4 p-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-sm text-center">
+              <span data-i18n="form-error-msg">حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.</span>
             </div>
           </div>
         </div>
@@ -773,16 +776,16 @@
       <div class="p-4 rounded-xl bg-black/60 border border-white/10 space-y-2 text-xs font-mono">
         <div class="text-gray-400 font-sans font-semibold mb-1" data-i18n="bank-info-title">تفاصيل التحويل البنكي المباشر:</div>
         <div class="flex justify-between text-gray-300">
-          <span>Bank Name:</span>
-          <span class="text-white font-bold">Bank of Khartoum (Bankak)</span>
+          <span data-i18n="bank-label-name">اسم البنك:</span>
+          <span class="text-white font-bold" data-i18n="bank-val-name">بنك الخرطوم (بنكك)</span>
         </div>
         <div class="flex justify-between text-gray-300">
-          <span>Account No:</span>
-          <span class="text-sky-400 font-bold">3829104 / Longevity Sudan</span>
+          <span data-i18n="bank-label-acc-holder">اسم الحساب:</span>
+          <span class="text-sky-400 font-bold" data-i18n="bank-val-acc-holder">ديمر الفرد قديل الاعيسر</span>
         </div>
         <div class="flex justify-between text-gray-300">
-          <span>Crypto (USDT TRC20):</span>
-          <span class="text-amber-400 font-bold text-[10px]">T9zX...LongevitySudanOfficial</span>
+          <span data-i18n="bank-label-acc-num">رقم الحساب:</span>
+          <span class="text-amber-400 font-bold font-space">2180255</span>
         </div>
       </div>
 
@@ -833,10 +836,10 @@
         "about-card3-title": "قيمنا",
         "about-card3-desc": "الشفافية المطلقة، الابتكار في التنفيذ الميداني، والتزام التضامن الإنساني غير المشروط مع متضرري النزاع.",
         "founder-tag": "المؤسس والمدير التنفيذي",
-        "founder-name": "ديمار ألفريد / Deemar Alfred",
+        "founder-name": "ديمر الفرد قديل الاعيسر / Deemer Alfred Gideil Elaiser",
         "founder-space-title": "مساحة المؤسس",
         "founder-quote": "\"العمل الإنساني ليس مجرد إغاثة مؤقتة، بل هو بناء الأدوات والقدرات التي تضمن استدامة الحياة والكرامة.\"",
-        "founder-bio": "يقود ديمار ألفريد منظمة Longevity Sudan برؤية ميدانية ثاقبة تهدف إلى تحويل التحديات المعقدة في السودان إلى فرص للتعلم والصمود. يركز عمله على دمقرطة الوصول إلى التقنية، وتقديم الإغاثة الذكية، وربط الشباب السوداني بالفرص العالمية.",
+        "founder-bio": "يقود ديمر الفرد قديل الاعيسر منظمة Longevity Sudan برؤية ميدانية ثاقبة تهدف إلى تحويل التحديات المعقدة في السودان إلى فرص للتعلم والصمود. يركز عمله على دمقرطة الوصول إلى التقنية، وتقديم الإغاثة الذكية، وربط الشباب السوداني بالفرص العالمية.",
         "founder-p1-title": "القيادة الميدانية المباشرة",
         "founder-p1-desc": "التواجد المستمر في نقاط التدخل والتواصل المباشر مع الأهالي.",
         "founder-p2-title": "التمكين التكنولوجي",
@@ -872,7 +875,7 @@
         "media-title": "توثيق الميدان والميديا",
         "media1-title": "وثائقي: صمود الشباب في الخرطوم",
         "media1-desc": "تغطية خاصة لعمليات توزيع المساعدات وتجهيز المراكز التقنية.",
-        "media2-title": "لقاء المؤسس ديمار ألفريد",
+        "media2-title": "لقاء المؤسس ديمر الفرد قديل الاعيسر",
         "media2-desc": "حديث حول استراتيجية Longevity Sudan وخطة الشهور القادمة.",
         "contact-tag": "// انضم إلينا",
         "contact-title": "تواصل معنا وشارك في التغيير",
@@ -889,14 +892,20 @@
         "form-msg": "تفاصيل الرسالة",
         "form-submit": "إرسال الرسالة الآن",
         "form-success-msg": "تم إرسال رسالتك بنجاح! وسيتواصل معك فريقنا في أقرب وقت.",
+        "form-error-msg": "حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.",
         "footer-copy": "© 2026 Longevity Sudan Org. جميع الحقوق محفوظة.",
         "modal-title": "ادعم مسيرة Longevity Sudan",
         "modal-sub": "مساهمتك المباشرة تصنع فارقاً حقيقياً في الميدان",
-        "tier1-title": "كفالة تعليم طفل",
+        "tier1-title": "كفالة تعليم طفل رقمياً",
         "tier1-desc": "توفير المستلزمات والولوج للتعليم الرقمي لمدة شهر",
         "tier2-title": "حاسوب محمول للقرية الذكية",
         "tier2-desc": "شراء جهاز تدريبي مجهز بأدوات التعليم الذاتي",
         "bank-info-title": "تفاصيل التحويل البنكي المباشر:",
+        "bank-label-name": "اسم البنك:",
+        "bank-val-name": "بنك الخرطوم (بنكك)",
+        "bank-label-acc-holder": "اسم الحساب:",
+        "bank-val-acc-holder": "ديمر الفرد قديل الاعيسر",
+        "bank-label-acc-num": "رقم الحساب:",
         "modal-close": "إغلاق النافذة"
       },
       en: {
@@ -929,10 +938,10 @@
         "about-card3-title": "Our Values",
         "about-card3-desc": "Absolute transparency, innovation in field execution, and unconditional humanitarian solidarity with conflict-affected populations.",
         "founder-tag": "Founder & Executive Director",
-        "founder-name": "Deemar Alfred",
+        "founder-name": "Deemer Alfred Gideil Elaiser",
         "founder-space-title": "Founder's Space",
         "founder-quote": "\"Humanitarian work is not mere temporary relief; it is building the tools and capabilities that guarantee long-term life and dignity.\"",
-        "founder-bio": "Deemar Alfred leads Longevity Sudan with sharp field vision to turn Sudan's complex challenges into learning opportunities. His work focuses on democratizing tech access, delivering smart relief, and connecting youth to global networks.",
+        "founder-bio": "Deemer Alfred Gideil Elaiser leads Longevity Sudan with sharp field vision to turn Sudan's complex challenges into learning opportunities. His work focuses on democratizing tech access, delivering smart relief, and connecting youth to global networks.",
         "founder-p1-title": "Direct Field Leadership",
         "founder-p1-desc": "Continuous presence at intervention points and direct community engagement.",
         "founder-p2-title": "Technological Empowerment",
@@ -968,7 +977,7 @@
         "media-title": "Field Media & Documentation",
         "media1-title": "Doc: Youth Resilience in Khartoum",
         "media1-desc": "Behind-the-scenes look at aid distribution and digital learning center setups.",
-        "media2-title": "Founder Interview with Deemar Alfred",
+        "media2-title": "Founder Interview with Deemer Alfred Gideil Elaiser",
         "media2-desc": "In-depth discussion on Longevity Sudan's strategic roadmap for upcoming months.",
         "contact-tag": "// JOIN US",
         "contact-title": "Get in Touch & Make an Impact",
@@ -985,6 +994,7 @@
         "form-msg": "Your Message",
         "form-submit": "Send Message Now",
         "form-success-msg": "Your message has been sent successfully! Our team will reach out shortly.",
+        "form-error-msg": "An error occurred while sending. Please try again.",
         "footer-copy": "© 2026 Longevity Sudan Org. All rights reserved.",
         "modal-title": "Support Longevity Sudan",
         "modal-sub": "Your direct contribution fuels immediate field transformation",
@@ -993,6 +1003,11 @@
         "tier2-title": "Smart Village Laptop",
         "tier2-desc": "Funds a refurbished learning laptop with self-study software",
         "bank-info-title": "Direct Banking Details:",
+        "bank-label-name": "Bank Name:",
+        "bank-val-name": "Bank of Khartoum (Bankak)",
+        "bank-label-acc-holder": "Account Name:",
+        "bank-val-acc-holder": "Deemer Alfred Gideil Elaiser",
+        "bank-label-acc-num": "Account Number:",
         "modal-close": "Close Window"
       }
     };
@@ -1036,14 +1051,43 @@
       document.getElementById('donate-modal').classList.add('hidden');
     }
 
-    // Handle Form Submission
-    function handleFormSubmit(e) {
+    // Handle Form Submission via AJAX to Formspree
+    async function handleFormSubmit(e) {
       e.preventDefault();
-      document.getElementById('form-success').classList.remove('hidden');
-      e.target.reset();
-      setTimeout(() => {
-        document.getElementById('form-success').classList.add('hidden');
-      }, 5000);
+      const form = e.target;
+      const data = new FormData(form);
+      const btn = document.getElementById('submit-btn');
+      const successBox = document.getElementById('form-success');
+      const errorBox = document.getElementById('form-error');
+
+      btn.disabled = true;
+      btn.classList.add('opacity-50');
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          successBox.classList.remove('hidden');
+          errorBox.classList.add('hidden');
+          form.reset();
+          setTimeout(() => successBox.classList.add('hidden'), 6000);
+        } else {
+          errorBox.classList.remove('hidden');
+          successBox.classList.add('hidden');
+        }
+      } catch (err) {
+        errorBox.classList.remove('hidden');
+        successBox.classList.add('hidden');
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+      }
     }
 
     // Video Placeholder Click Notice
