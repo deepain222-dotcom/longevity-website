@@ -1,611 +1,293 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark scroll-smooth">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منظومة البقاء للأعمال الإنسانية | Longevity Sudan</title>
+    <title>Longevity Sudan | جمعية البقاء للأعمال الإنسانية</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            cyan: '#00f2fe',
-                            blue: '#4facfe',
-                            dark: '#080c14',
-                            card: 'rgba(15, 23, 42, 0.75)',
-                            border: 'rgba(0, 242, 254, 0.18)'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'Tahoma', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Blueprint Technical Grid Overlay */
         body {
-            background-color: #050811;
-            background-image: 
-                linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
-            background-size: 32px 32px;
-            color: #f1f5f9;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0B0F19;
+            color: #F3F4F6;
         }
-
-        /* Glassmorphism Classes */
-        .glass-panel {
-            background: rgba(13, 20, 36, 0.7);
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 242, 254, 0.15);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .glass-nav {
-            background: rgba(5, 8, 17, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+        .glow-btn {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            transition: all 0.3s ease;
         }
-
-        .cyan-glow {
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
-        }
-
-        .cyan-glow-text {
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
-        }
-
-        /* Page View Visibility */
-        .page-view {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .page-view.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050811;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 242, 254, 0.3);
-            border-radius: 3px;
+        .glow-btn:hover {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
+<body class="min-h-screen flex flex-col selection:bg-cyan-500 selection:text-white">
 
-    <!-- Header / Navigation -->
-    <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Brand Logo & Title -->
-                <a href="#home" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-brand-cyan border border-brand-cyan/30 group-hover:cyan-glow transition">
-                        <i class="fa-solid fa-microchip text-lg"></i>
-                    </div>
-                    <div>
-                        <span class="text-lg font-bold tracking-wider text-white block leading-none">LONGEVITY <span class="text-brand-cyan">SUDAN</span></span>
-                        <span class="text-[10px] text-gray-400 font-mono tracking-widest block uppercase mt-1">Youth Charity Org</span>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-1 space-x-reverse text-sm font-medium">
-                    <a href="#home" class="nav-link px-3 py-2 rounded-md hover:text-brand-cyan transition text-gray-300" data-view="home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-                    <a href="#about" class="nav-link px-3 py-2 rounded-md hover:text-brand-cyan transition text-gray-300" data-view="about" data-ar="من نحن" data-en="About Us">من نحن</a>
-                    <a href="#projects" class="nav-link px-3 py-2 rounded-md hover:text-brand-cyan transition text-gray-300" data-view="projects" data-ar="المشاريع" data-en="Projects">المشاريع</a>
-                    <a href="#plan" class="nav-link px-3 py-2 rounded-md hover:text-brand-cyan transition text-gray-300" data-view="plan" data-ar="خطة الـ 30 يوماً" data-en="30-Day Plan">خطة الـ 30 يوماً</a>
-                    <a href="#media" class="nav-link px-3 py-2 rounded-md hover:text-brand-cyan transition text-gray-300" data-view="media" data-ar="الميديا" data-en="Media Hub">الميديا</a>
-                    <a href="#donate" class="nav-link px-3 py-2 rounded-md hover:text-brand-cyan transition text-gray-300" data-view="donate" data-ar="ادعمنا" data-en="Donate">ادعمنا</a>
-                    <a href="#contact" class="nav-link px-3 py-2 rounded-md hover:text-brand-cyan transition text-gray-300" data-view="contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
-                </nav>
-
-                <!-- Actions Right Side -->
-                <div class="hidden md:flex items-center gap-3">
-                    <!-- Language Switcher -->
-                    <button id="langToggleBtn" onclick="toggleLanguage()" class="glass-panel text-xs font-mono px-3 py-2 rounded-lg text-brand-cyan border border-brand-cyan/30 hover:bg-brand-cyan/10 transition flex items-center gap-2">
-                        <i class="fa-solid fa-globe"></i>
-                        <span id="langText">EN</span>
-                    </button>
-                    <!-- CTA Donate -->
-                    <a href="#donate" class="bg-gradient-to-r from-brand-cyan to-brand-blue text-slate-950 font-bold text-xs px-4 py-2.5 rounded-lg cyan-glow hover:opacity-90 transition flex items-center gap-2">
-                        <i class="fa-solid fa-heart"></i>
-                        <span data-ar="تبرع الآن" data-en="Donate Now">تبرع الآن</span>
-                    </a>
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass-card border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo & Brand -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="w-12 h-12 rounded-xl bg-black border border-cyan-500/40 flex items-center justify-center p-2 shadow-lg shadow-cyan-500/10">
+                    <svg viewBox="0 0 100 100" class="w-full h-full fill-white">
+                        <path d="M20 20 H50 V40 H35 V70 H70 V55 H85 V80 H20 Z" />
+                    </svg>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="flex md:hidden items-center gap-2">
-                    <button onclick="toggleLanguage()" class="glass-panel text-xs font-mono p-2 rounded-lg text-brand-cyan">
-                        <i class="fa-solid fa-globe"></i>
-                    </button>
-                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="glass-panel p-2 rounded-lg text-gray-300 hover:text-white">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
+                <div>
+                    <span class="text-xl font-black tracking-wider text-white">LONGEVITY SUDAN</span>
+                    <span class="block text-[10px] tracking-widest text-cyan-400 font-medium">YOUTH CHARITY ORG</span>
                 </div>
             </div>
-        </div>
 
-        <!-- Mobile Drawer Menu -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-brand-cyan/20 px-4 pt-2 pb-6 space-y-2 text-sm">
-            <a href="#home" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-            <a href="#about" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan" data-ar="من نحن" data-en="About Us">من نحن</a>
-            <a href="#projects" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan" data-ar="المشاريع" data-en="Projects">المشاريع</a>
-            <a href="#plan" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan" data-ar="خطة الـ 30 يوماً" data-en="30-Day Plan">خطة الـ 30 يوماً</a>
-            <a href="#media" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan" data-ar="الميديا والأنشطة" data-en="Media Hub">الميديا والأنشطة</a>
-            <a href="#donate" onclick="closeMobileMenu()" class="block py-2 text-brand-cyan font-bold" data-ar="ادعمنا والتبرع" data-en="Donate & Support">ادعمنا والتبرع</a>
-            <a href="#contact" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
+                <button onclick="switchTab('home')" id="nav-home" class="transition hover:text-cyan-400 text-cyan-400 font-bold">الرئيسية</button>
+                <button onclick="switchTab('about')" id="nav-about" class="transition hover:text-cyan-400">من نحن</button>
+                <button onclick="switchTab('projects')" id="nav-projects" class="transition hover:text-cyan-400">المشاريع</button>
+                <button onclick="switchTab('challenge')" id="nav-challenge" class="transition hover:text-cyan-400">خطة الـ 30 يوماً</button>
+                <button onclick="switchTab('media')" id="nav-media" class="transition hover:text-cyan-400">الميديا</button>
+                <button onclick="switchTab('donate')" id="nav-donate" class="transition hover:text-cyan-400">ادعمنا</button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="transition hover:text-cyan-400">تواصل معنا</button>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <button onclick="switchTab('donate')" class="glow-btn px-5 py-2.5 rounded-xl font-bold text-sm text-white shadow-lg flex items-center gap-2">
+                    <span>تبرع الآن</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT VIEWS CONTAINER -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
+    <!-- Main Content Container (SPA) -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
 
-        <!-- ================================================= ==================== -->
-        <!-- VIEW 1: HOME PAGE VIEW -->
-        <!-- ================================================= ==================== -->
-        <section id="view-home" class="page-view space-y-16">
-            <!-- Hero Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
+        <!-- 1. HOME TAB -->
+        <section id="tab-home" class="space-y-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left Glass Window -->
+                <div class="lg:col-span-5 glass-card p-6 rounded-2xl border border-cyan-500/30 relative overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent pointer-events-none"></div>
+                    <div class="flex items-center justify-center mb-6">
+                        <div class="w-24 h-24 rounded-2xl bg-black border border-cyan-400 flex items-center justify-center p-4 shadow-xl">
+                            <svg viewBox="0 0 100 100" class="w-full h-full fill-cyan-400">
+                                <path d="M20 20 H50 V40 H35 V70 H70 V55 H85 V80 H20 Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h2 class="text-center text-lg font-bold text-white mb-2">Longevity Sudan Org</h2>
+                    <p class="text-xs text-center text-gray-400 mb-6">جمعية البقاء للأعمال الإنسانية</p>
+                    <div class="flex justify-between items-center text-xs text-cyan-400 border-t border-gray-800 pt-4 font-mono">
+                        <span>VER: 3.0_GLASS</span>
+                        <span>REF: 2026_SD_ORG</span>
+                    </div>
+                </div>
+
+                <!-- Right Hero Text -->
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-brand-cyan/30 text-brand-cyan text-xs font-mono">
-                        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
-                        <span data-ar="منظمة شبابية طوعية إنسانية • السودان" data-en="Youth Humanitarian Volunteer Org • Sudan">منظمة شبابية طوعية إنسانية • السودان</span>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        جمعية شبابية طوعية إنسانية • السودان
                     </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                        <span data-ar="هل تريد أن تكون جزءاً من" data-en="Want to be part of the">هل تريد أن تكون جزءاً من</span><br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue cyan-glow-text" data-ar="التغيير الإيجابي؟" data-en="Positive Change?">التغيير الإيجابي؟</span>
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
+                        هل تريد أن تكون جزءاً من <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">التغيير الإيجابي؟</span>
                     </h1>
-                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed" data-ar="نحن نبني منظومة استدامة وبقاء تمكّن الشباب والفتيات في السودان من خلال التكنولوجيا والتعليم الميداني والتكافل الاجتماعي لبناء مستقبل أقوى." data-en="We build a sustainability and survival system empowering youth in Sudan through technology, field education, and social solidarity to build a stronger future.">
-                        نحن نبني منظومة استدامة وبقاء تمكّن الشباب والفتيات في السودان من خلال التكنولوجيا والتعليم الميداني والتكافل الاجتماعي لبناء مستقبل أقوى.
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        نحن نبني منظومة استدامة وبقاء تمكّن الشباب والفتيات في السودان من خلال التكنولوجيا والتعليم الميداني والتكامل الاجتماعي لبناء مستقبل أقوى.
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="#projects" class="bg-gradient-to-r from-brand-cyan to-brand-blue text-slate-950 font-bold px-6 py-3.5 rounded-xl cyan-glow hover:opacity-90 transition flex items-center gap-2">
-                            <span data-ar="استكشف مشاريعنا" data-en="Explore Projects">استكشف مشاريعنا</span>
-                            <i class="fa-solid fa-arrow-left text-xs rtl:rotate-0 ltr:rotate-180"></i>
-                        </a>
-                        <a href="#donate" class="glass-panel text-white font-semibold px-6 py-3.5 rounded-xl border border-brand-cyan/30 hover:bg-brand-cyan/10 transition flex items-center gap-2">
-                            <i class="fa-solid fa-hand-holding-dollar text-brand-cyan"></i>
-                            <span data-ar="ساهم في الدعم" data-en="Support Our Cause">ساهم في الدعم</span>
-                        </a>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <button onclick="switchTab('projects')" class="glow-btn px-6 py-3 rounded-xl font-bold text-white flex items-center gap-2">
+                            <span>استكشف مشاريعنا</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </button>
+                        <button onclick="switchTab('donate')" class="glass-card hover:bg-gray-800 px-6 py-3 rounded-xl font-bold text-white border border-gray-700 flex items-center gap-2 transition">
+                            <span>ساهم في الدعم</span>
+                        </button>
                     </div>
-                </div>
-
-                <!-- Hero Interactive Blueprint Card -->
-                <div class="lg:col-span-5">
-                    <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/30 relative overflow-hidden group">
-                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
-                        
-                        <!-- Visual Blueprint Graphic / Placeholder Image -->
-                        <!-- -------------------------------------------------------------------------- -->
-                        <!-- IMAGE PLACEHOLDER INSTRUCTION: Replace src below with your main banner img -->
-                        <!-- -------------------------------------------------------------------------- -->
-                        <div class="relative w-full h-64 rounded-xl overflow-hidden mb-6 border border-brand-cyan/20 bg-slate-900/80 flex items-center justify-center">
-                            <img src="https://placehold.co/600x400/0f172a/00f2fe?text=Longevity+Sudan+Org" alt="Longevity Sudan Banner" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/00f2fe?text=Longevity+Sudan';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-3 right-3 left-3 text-xs font-mono text-brand-cyan bg-slate-950/80 px-3 py-1.5 rounded border border-brand-cyan/30 flex justify-between">
-                                <span>REF: 2026_SD_ORG</span>
-                                <span>VER: 3.0_GLASS</span>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3">
-                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                                <i class="fa-solid fa-shield-halved text-brand-cyan"></i>
-                                <span data-ar="منظومة البقاء للأعمال الإنسانية" data-en="Humanitarian Survival Network">منظومة البقاء للأعمال الإنسانية</span>
-                            </h3>
-                            <p class="text-xs text-gray-400 font-mono leading-relaxed" data-ar="إعادة صياغة المستقبل بجهود الشباب السوداني وتوفير حلول مستدامة في مجالات الصحة، التغذية والتعليم." data-en="Reshaping the future through Sudanese youth efforts and providing sustainable solutions in health, nutrition and education.">
-                                إعادة صياغة المستقبل بجهود الشباب السوداني وتوفير حلول مستدامة في مجالات الصحة، التغذية والتعليم.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Impact Quick Stats Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="glass-panel p-5 rounded-xl border border-brand-cyan/20 text-center space-y-1">
-                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-cyan font-mono">500+</div>
-                    <div class="text-xs text-gray-400" data-ar="مستفيد مباشر" data-en="Direct Beneficiaries">مستفيد مباشر</div>
-                </div>
-                <div class="glass-panel p-5 rounded-xl border border-brand-cyan/20 text-center space-y-1">
-                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-cyan font-mono">+15</div>
-                    <div class="text-xs text-gray-400" data-ar="مبادرة ميدانية" data-en="Field Initiatives">مبادرة ميدانية</div>
-                </div>
-                <div class="glass-panel p-5 rounded-xl border border-brand-cyan/20 text-center space-y-1">
-                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-cyan font-mono">100%</div>
-                    <div class="text-xs text-gray-400" data-ar="التزام شبابي طوعي" data-en="Youth Commitment">التزام شبابي طوعي</div>
-                </div>
-                <div class="glass-panel p-5 rounded-xl border border-brand-cyan/20 text-center space-y-1">
-                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-cyan font-mono">24/7</div>
-                    <div class="text-xs text-gray-400" data-ar="استجابة طارئة" data-en="Emergency Response">استجابة طارئة</div>
                 </div>
             </div>
         </section>
 
-        <!-- ================================================= ==================== -->
-        <!-- VIEW 2: ABOUT US & LEADERSHIP VIEW -->
-        <!-- ================================================= ==================== -->
-        <section id="view-about" class="page-view space-y-12">
-            <div class="border-b border-brand-cyan/20 pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-users-gear text-brand-cyan"></i>
-                    <span data-ar="من نحن والقيادة" data-en="About Us & Leadership">من نحن والقيادة</span>
-                </h2>
-                <p class="text-sm text-gray-400 font-mono mt-1" data-ar="رؤيتنا، رسالتنا، ومؤسس المنظومة" data-en="Our vision, mission, and organizational founder">رؤيتنا، رسالتنا، ومؤسس المنظومة</p>
+        <!-- 2. ABOUT TAB -->
+        <section id="tab-about" class="hidden space-y-10">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <h2 class="text-3xl font-black text-cyan-400">من نحن</h2>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    منظومة طوعية إنسانية مستقلة، تأسست برؤية عميقة لإعادة صياغة المستقبل بجهود الشباب السوداني وتوفير حلول مستدامة في مجالات الصحة، التغذية، والتعليم، تحت إدارة المؤسس <span class="text-white font-bold">ديمر الفرد قديل الاعيسر</span>.
+                </p>
             </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto glass-card p-8 rounded-3xl border border-cyan-500/20">
+                <div class="flex justify-center">
+                    <img src="المؤسس.jpeg" alt="المؤسس ديمر الفرد" class="rounded-2xl w-64 h-80 object-cover border border-cyan-500/40 shadow-2xl">
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-white">كلمة المؤسس</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        "نؤمن بأن التغيير الحقيقي لا يأتِ من الانتظار، بل يبدأ من انضباط الذات، والعمل الجماعي، وتوظيف أبسط الإمكانيات لصنع أثر مستدام يمتد لأجيال."
+                    </p>
+                    <div class="pt-2 text-cyan-400 font-bold text-sm">
+                        ديمر الفرد قديل الاعيسر — مؤسس الجمعية
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <!-- Vision, Mission & Values -->
+        <!-- 3. PROJECTS TAB -->
+        <section id="tab-projects" class="hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <h2 class="text-3xl font-black text-cyan-400">مشاريعنا الاستراتيجية</h2>
+                <p class="text-gray-400">مبادرات عملية تهدف إلى تمكين المجتمع وتوفير مقومات الحياة الكريمة.</p>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/20 space-y-3">
-                    <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl">
-                        <i class="fa-solid fa-eye"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-ar="رؤيتنا" data-en="Our Vision">رؤيتنا</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed" data-ar="تمكين مجتمعات صحية، متعلمة وقادرة على مواجهة التحديات من خلال الاستثمار في قدرات الشباب والحلول المستدامة." data-en="Empowering healthy, educated, and resilient communities through investment in youth potential and sustainable solutions.">
-                        تمكين مجتمعات صحية، متعلمة وقادرة على مواجهة التحديات من خلال الاستثمار في قدرات الشباب والحلول المستدامة.
-                    </p>
+                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold text-xl">01</div>
+                    <h3 class="text-xl font-bold text-white">التعليم الرقمي والمهني</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">توفير برامج تدريبية ومهارات عملية تمكّن الشباب من مواجهة تحديات العصر وسوق العمل.</p>
                 </div>
-
-                <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/20 space-y-3">
-                    <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl">
-                        <i class="fa-solid fa-bullseye"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-ar="رسالتنا" data-en="Our Mission">رسالتنا</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed" data-ar="تقديم خدمات التكافل، والتعليم التكنولوجي والميداني لمساعدة المتأثرين وتوفير أساسيات البقاء والاستدامة." data-en="Providing social solidarity, technology, and field education to aid those affected and provide survival fundamentals.">
-                        تقديم خدمات التكافل، والتعليم التكنولوجي والميداني لمساعدة المتأثرين وتوفير أساسيات البقاء والاستدامة.
-                    </p>
+                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold text-xl">02</div>
+                    <h3 class="text-xl font-bold text-white">الأمن الغذائي والتكافل</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">دعم الأسر المحتاجة وتوفير المساعدات الأساسية بروح التكاتف والتكافل المجتمعي.</p>
                 </div>
-
-                <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/20 space-y-3">
-                    <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl">
-                        <i class="fa-solid fa-gem"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-ar="قيمنا" data-en="Our Values">قيمنا</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed" data-ar="الشفافية المطلقة، التكافل الشبابي، الابتكار التقني، والعمل الميداني المباشر بدون تعقيدات." data-en="Absolute transparency, youth solidarity, technical innovation, and direct field execution without barriers.">
-                        الشفافية المطلقة، التكافل الشبابي، الابتكار التقني، والعمل الميداني المباشر بدون تعقيدات.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Founder Section -->
-            <div class="glass-panel p-8 rounded-2xl border border-brand-cyan/30 relative overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                    <!-- Founder Image / Placeholder -->
-                    <!-- -------------------------------------------------------------------------- -->
-                    <!-- FOUNDER PHOTO PLACEHOLDER: Replace src below with Founder Photo URL        -->
-                    <!-- -------------------------------------------------------------------------- -->
-                    <div class="md:col-span-4 flex justify-center">
-                        <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl border-2 border-brand-cyan/40 p-2 glass-panel cyan-glow">
-                            <img src="https://placehold.co/400x400/0f172a/00f2fe?text=Founder+Photo" alt="Deemar Alfred Gideil Elaiser" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f172a/00f2fe?text=Deemar+Alfred';">
-                            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-brand-cyan text-slate-950 font-bold text-[11px] px-3 py-1 rounded-full whitespace-nowrap shadow-md">
-                                <span data-ar="المؤسس والرئيس" data-en="Founder & Leader">المؤسس والرئيس</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Founder Info -->
-                    <div class="md:col-span-8 space-y-4 text-center md:text-right rtl:md:text-right ltr:md:text-left">
-                        <div class="inline-block bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-mono px-3 py-1 rounded-md">
-                            FOUNDER & LEADERSHIP
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
-                            <span data-ar="ديمر الفرد قديل الاعيسر" data-en="Deemar Alfred Gideil Elaiser">ديمر الفرد قديل الاعيسر</span>
-                        </h3>
-                        <p class="text-sm text-gray-300 leading-relaxed" data-ar="قائد ومؤسس منظومة البقاء للأعمال الإنسانية (Longevity Sudan). يسعى لترسيخ الابتكار والحلول التكنولوجية والميدانية لتمكين الشباب وتوفير مقومات الحياة الكريمة في أحلك الظروف." data-en="Leader and Founder of Longevity Sudan. Dedicated to promoting innovation, technological, and field solutions to empower youth and foster resilience under challenging conditions.">
-                            قائد ومؤسس منظومة البقاء للأعمال الإنسانية (Longevity Sudan). يسعى لترسيخ الابتكار والحلول التكنولوجية والميدانية لتمكين الشباب وتوفير مقومات الحياة الكريمة في أحلك الظروف.
-                        </p>
-                        <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-3">
-                            <a href="#contact" class="glass-panel text-brand-cyan border border-brand-cyan/30 px-4 py-2 rounded-lg text-xs font-mono hover:bg-brand-cyan/10 transition">
-                                <i class="fa-solid fa-envelope ml-1"></i> Contact Founder
-                            </a>
-                        </div>
-                    </div>
+                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold text-xl">03</div>
+                    <h3 class="text-xl font-bold text-white">الصحة المجتمعية</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">نشر الوعي الصحي وتأمين الاحتياجات الطبية الطارئة بالتعاون مع الكوادر التطوعية.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ================================================= ==================== -->
-        <!-- VIEW 3: PROJECTS & INITIATIVES VIEW -->
-        <!-- ================================================= ==================== -->
-        <section id="view-projects" class="page-view space-y-10">
-            <div class="border-b border-brand-cyan/20 pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-diagram-project text-brand-cyan"></i>
-                    <span data-ar="المشاريع والمبادرات" data-en="Projects & Initiatives">المشاريع والمبادرات</span>
-                </h2>
-                <p class="text-sm text-gray-400 font-mono mt-1" data-ar="استعراض لمبادراتنا الميدانية والتنموية" data-en="Overview of field and developmental initiatives">استعراض لمبادراتنا الميدانية والتنموية</p>
+        <!-- 4. 30-DAY CHALLENGE TAB -->
+        <section id="tab-challenge" class="hidden space-y-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <h2 class="text-3xl font-black text-cyan-400">رحلة الانضباط والنمو الشخصي (30 يوماً)</h2>
+                <p class="text-gray-300">خطوات يومية بسيطة.. لبناء إنسان قوي ومستعد للأفضل.</p>
             </div>
 
-            <!-- Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Project Card 1 -->
-                <div class="glass-panel rounded-2xl border border-brand-cyan/20 overflow-hidden space-y-4 p-5 hover:border-brand-cyan/50 transition">
-                    <!-- Image Placeholder for Project 1 -->
-                    <div class="w-full h-48 rounded-xl bg-slate-900 border border-brand-cyan/20 overflow-hidden relative">
-                        <img src="https://placehold.co/600x400/0f172a/00f2fe?text=Youth+Tech+Hub" alt="Project 1" class="w-full h-full object-cover">
-                        <span class="absolute top-2 right-2 bg-brand-cyan/90 text-slate-950 font-bold text-[10px] px-2.5 py-1 rounded">مستمر</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-ar="مركز التكنولوجيا للشباب" data-en="Youth Tech Hub">مركز التكنولوجيا للشباب</h3>
-                    <p class="text-xs text-gray-300 leading-relaxed" data-ar="تدريب الشباب والفتيات على أجهزة الكمبيوتر والتكنولوجيا المتقدمة لبناء مهارات رقمية تؤهلهم لسوق العمل الذاتي." data-en="Training youth on computing and advanced tech to build digital skills for freelance labor markets.">
-                        تدريب الشباب والفتيات على أجهزة الكمبيوتر والتكنولوجيا المتقدمة لبناء مهارات رقمية تؤهلهم لسوق العمل الذاتي.
-                    </p>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="glass-panel rounded-2xl border border-brand-cyan/20 overflow-hidden space-y-4 p-5 hover:border-brand-cyan/50 transition">
-                    <!-- Image Placeholder for Project 2 -->
-                    <div class="w-full h-48 rounded-xl bg-slate-900 border border-brand-cyan/20 overflow-hidden relative">
-                        <img src="https://placehold.co/600x400/0f172a/00f2fe?text=Emergency+Medical+Aid" alt="Project 2" class="w-full h-full object-cover">
-                        <span class="absolute top-2 right-2 bg-brand-cyan/90 text-slate-950 font-bold text-[10px] px-2.5 py-1 rounded">استجابة طارئة</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-ar="الإغاثة الطبية والتغذوية" data-en="Medical & Food Relief">الإغاثة الطبية والتغذوية</h3>
-                    <p class="text-xs text-gray-300 leading-relaxed" data-ar="توفير الأدوية الأساسية والوجبات المغذية للعائلات المتعففة والأطفال والأسر المتأثرة في المناطق الحرجة." data-en="Providing essential medicines and nutritional meals for vulnerable families and children in impacted regions.">
-                        توفير الأدوية الأساسية والوجبات المغذية للعائلات المتعففة والأطفال والأسر المتأثرة في المناطق الحرجة.
-                    </p>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="glass-panel rounded-2xl border border-brand-cyan/20 overflow-hidden space-y-4 p-5 hover:border-brand-cyan/50 transition">
-                    <!-- Image Placeholder for Project 3 -->
-                    <div class="w-full h-48 rounded-xl bg-slate-900 border border-brand-cyan/20 overflow-hidden relative">
-                        <img src="https://placehold.co/600x400/0f172a/00f2fe?text=Clean+Water+Initiative" alt="Project 3" class="w-full h-full object-cover">
-                        <span class="absolute top-2 right-2 bg-brand-cyan/90 text-slate-950 font-bold text-[10px] px-2.5 py-1 rounded">ميداني</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-ar="مبادرة المياه الصالحة للشرب" data-en="Clean Water Initiative">مبادرة المياه الصالحة للشرب</h3>
-                    <p class="text-xs text-gray-300 leading-relaxed" data-ar="تركيب وتوفير مرشحات وخزانات المياه النقية في الأحياء التي تعاني من انقطاع الإمدادات الأساسية." data-en="Installing clean water filters and supply tanks in neighborhoods facing severe water supply shortages.">
-                        تركيب وتوفير مرشحات وخزانات المياه النقية في الأحياء التي تعاني من انقطاع الإمدادات الأساسية.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================================================= ==================== -->
-        <!-- VIEW 4: 30-DAY PLAN VIEW -->
-        <!-- ================================================= ==================== -->
-        <section id="view-plan" class="page-view space-y-10">
-            <div class="border-b border-brand-cyan/20 pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-calendar-check text-brand-cyan"></i>
-                    <span data-ar="خطة التحول والـ 30 يوماً" data-en="30-Day Transformation Roadmap">خطة التحول والـ 30 يوماً</span>
-                </h2>
-                <p class="text-sm text-gray-400 font-mono mt-1" data-ar="خارطة الطريق الأسبوعية لبناء المنظومة واستدامتها" data-en="Weekly roadmap for building and sustaining the organization">خارطة الطريق الأسبوعية لبناء المنظومة واستدامتها</p>
-            </div>
-
-            <!-- Roadmap Timeline Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Week 1 -->
-                <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/30 relative space-y-3">
-                    <div class="text-xs font-mono text-brand-cyan bg-brand-cyan/10 px-2.5 py-1 rounded w-max border border-brand-cyan/30">الأسبوع 1 (Days 1-7)</div>
-                    <h3 class="text-lg font-bold text-white" data-ar="التأسيس وتأكيد الهوية" data-en="Establishment & Identity">التأسيس وتأكيد الهوية</h3>
-                    <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
-                        <li data-ar="إكمال الموقع والهوية الرقمية" data-en="Complete website & digital identity">إكمال الموقع والهوية الرقمية</li>
-                        <li data-ar="تجهيز قنوات التواصل والدعم" data-en="Set up support channels">تجهيز قنوات التواصل والدعم</li>
-                        <li data-ar="اعتماد الحساب البنكي الرسمي" data-en="Confirm official bank account">اعتماد الحساب البنكي الرسمي</li>
+                <div class="glass-card p-6 rounded-2xl space-y-3 border border-cyan-500/20">
+                    <div class="text-cyan-400 font-bold text-sm">الأسبوع الأول</div>
+                    <h3 class="text-xl font-bold text-white">انضباط اليوم والبدن (البداية من الباكر)</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> الاستيقاظ مع الفجر ونشاط الصباح.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> مشي يومي لمدة 20 إلى 30 دقيقة.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> شرب الماء والحرص على النوم الباكر.</li>
                     </ul>
                 </div>
 
                 <!-- Week 2 -->
-                <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/30 relative space-y-3">
-                    <div class="text-xs font-mono text-brand-cyan bg-brand-cyan/10 px-2.5 py-1 rounded w-max border border-brand-cyan/30">الأسبوع 2 (Days 8-15)</div>
-                    <h3 class="text-lg font-bold text-white" data-ar="التعبئة الميدانية" data-en="Field Mobilization">التعبئة الميدانية</h3>
-                    <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
-                        <li data-ar="تسجيل المتطوعين والشباب" data-en="Register volunteers & youth">تسجيل المتطوعين والشباب</li>
-                        <li data-ar="حصر الاحتياجات الميدانية الحرجة" data-en="Identify critical field needs">حصر الاحتياجات الميدانية الحرجة</li>
-                        <li data-ar="إطلاق أول الحملات التوعوية" data-en="Launch awareness campaigns">إطلاق أول الحملات التوعوية</li>
+                <div class="glass-card p-6 rounded-2xl space-y-3 border border-cyan-500/20">
+                    <div class="text-cyan-400 font-bold text-sm">الأسبوع الثاني</div>
+                    <h3 class="text-xl font-bold text-white">ترتيب الذهن والنفس (التخلص من التشتت)</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> الابتعاد عن القيل والقال والأخبار المحبطة.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> التدرب على ضبط النفس والرد بالكلمة الطيبة.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> تخصيص وقت للسكينة والاستغفار والتفكر.</li>
                     </ul>
                 </div>
 
                 <!-- Week 3 -->
-                <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/30 relative space-y-3">
-                    <div class="text-xs font-mono text-brand-cyan bg-brand-cyan/10 px-2.5 py-1 rounded w-max border border-brand-cyan/30">الأسبوع 3 (Days 16-22)</div>
-                    <h3 class="text-lg font-bold text-white" data-ar="التنفيذ والتوزيع" data-en="Execution & Distribution">التنفيذ والتوزيع</h3>
-                    <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
-                        <li data-ar="توزيع السلال والمساعدات" data-en="Distribute aid packages">توزيع السلال والمساعدات</li>
-                        <li data-ar="بدء دورات التدريب التكنولوجي" data-en="Start tech training courses">بدء دورات التدريب التكنولوجي</li>
-                        <li data-ar="توثيق الأثر والشفافية" data-en="Document impact & transparency">توثيق الأثر والشفافية</li>
+                <div class="glass-card p-6 rounded-2xl space-y-3 border border-cyan-500/20">
+                    <div class="text-cyan-400 font-bold text-sm">الأسبوع الثالث</div>
+                    <h3 class="text-xl font-bold text-white">تطوير المهارة والتطبيق اليدوي الشخصي</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> تعلم حرفة أو مهارة عملية جديدة يومياً.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> إصلاح وترتيب المساحة والأدوات الشخصية بنفسك.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> الاعتماد الذاتي الكامل في تلبية الاحتياجات اليومية.</li>
                     </ul>
                 </div>
 
                 <!-- Week 4 -->
-                <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/30 relative space-y-3">
-                    <div class="text-xs font-mono text-brand-cyan bg-brand-cyan/10 px-2.5 py-1 rounded w-max border border-brand-cyan/30">الأسبوع 4 (Days 23-30)</div>
-                    <h3 class="text-lg font-bold text-white" data-ar="التوسع والاستدامة" data-en="Expansion & Sustainability">التوسع والاستدامة</h3>
-                    <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
-                        <li data-ar="تقييم مخرجات الخطة" data-en="Evaluate roadmap outputs">تقييم مخرجات الخطة</li>
-                        <li data-ar="عقد شراكات جديدة" data-en="Form new partnerships">عقد شراكات جديدة</li>
-                        <li data-ar="نشر التقرير الشامل" data-en="Publish comprehensive report">نشر التقرير الشامل</li>
+                <div class="glass-card p-6 rounded-2xl space-y-3 border border-cyan-500/20">
+                    <div class="text-cyan-400 font-bold text-sm">الأسبوع الرابع</div>
+                    <h3 class="text-xl font-bold text-white">الثبات واستدامة أسلوب الحياة</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> المحافظة على العادات المكتسبة لتصبح تلقائية.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> تقييم الذات والاعتزاز بما تحقق من تطور.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> وضع أهداف شخصية جديدة للشهر القادم.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- ================================================= ==================== -->
-        <!-- VIEW 5: MEDIA HUB (PHOTOS & VIDEOS) VIEW -->
-        <!-- ================================================= ==================== -->
-        <section id="view-media" class="page-view space-y-10">
-            <div class="border-b border-brand-cyan/20 pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-photo-film text-brand-cyan"></i>
-                    <span data-ar="المركز الإعلامي والمعرض" data-en="Media Hub & Gallery">المركز الإعلامي والمعرض</span>
-                </h2>
-                <p class="text-sm text-gray-400 font-mono mt-1" data-ar="معرض الصور والفيديوهات للأنشطة الميدانية" data-en="Photo and video gallery for field activities">معرض الصور والفيديوهات للأنشطة الميدانية</p>
+        <!-- 5. MEDIA TAB -->
+        <section id="tab-media" class="hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <h2 class="text-3xl font-black text-cyan-400">المركز الإعلامي</h2>
+                <p class="text-gray-400">صور وأنشطة توثيقية لرحلة العمل الإنساني والتطوير.</p>
             </div>
-
-            <!-- Video Section (YouTube / MP4 Embeds) -->
-            <div class="space-y-4">
-                <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                    <i class="fa-brands fa-youtube text-red-500"></i>
-                    <span data-ar="التغطيات المرئية والفيديوهات" data-en="Video Coverage">التغطيات المرئية والفيديوهات</span>
-                </h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- -------------------------------------------------------------------------- -->
-                    <!-- YOUTUBE / VIDEO EMBED INSTRUCTION: Replace YouTube URL in iframe src below  -->
-                    <!-- -------------------------------------------------------------------------- -->
-                    <div class="glass-panel p-4 rounded-2xl border border-brand-cyan/20 space-y-3">
-                        <div class="aspect-video w-full rounded-xl overflow-hidden bg-slate-900 border border-brand-cyan/20">
-                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Longevity Sudan Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <h4 class="font-bold text-white text-sm" data-ar="فيديو وثائقي: انطلاقة منظومة البقاء" data-en="Documentary: Launching Longevity Sudan">فيديو وثائقي: انطلاقة منظومة البقاء</h4>
-                    </div>
-
-                    <div class="glass-panel p-4 rounded-2xl border border-brand-cyan/20 space-y-3">
-                        <div class="aspect-video w-full rounded-xl overflow-hidden bg-slate-900 border border-brand-cyan/20 flex items-center justify-center text-gray-500">
-                            <div class="text-center p-4">
-                                <i class="fa-solid fa-circle-play text-4xl text-brand-cyan/50 mb-2"></i>
-                                <p class="text-xs font-mono" data-ar="مكان مخصص لإضافة فيديو جديد لاحقاً" data-en="Placeholder for future video embed">مكان مخصص لإضافة فيديو جديد لاحقاً</p>
-                            </div>
-                        </div>
-                        <h4 class="font-bold text-white text-sm" data-ar="التغطية الميدانية للمبادرة التكنولوجية" data-en="Field Coverage for Tech Initiative">التغطية الميدانية للمبادرة التكنولوجية</h4>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Photo Gallery Section -->
-            <div class="space-y-4 pt-4">
-                <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-images text-brand-cyan"></i>
-                    <span data-ar="معرض الصور الميداني" data-en="Photo Gallery">معرض الصور الميداني</span>
-                </h3>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <!-- -------------------------------------------------------------------------- -->
-                    <!-- PHOTO PLACEHOLDERS: Replace image src URLs below with actual image links    -->
-                    <!-- -------------------------------------------------------------------------- -->
-                    <div class="glass-panel p-2 rounded-xl border border-brand-cyan/20 aspect-square overflow-hidden group">
-                        <img src="https://placehold.co/400x400/0f172a/00f2fe?text=Field+Photo+1" alt="Gallery 1" class="w-full h-full object-cover rounded-lg group-hover:scale-110 transition duration-300">
-                    </div>
-                    <div class="glass-panel p-2 rounded-xl border border-brand-cyan/20 aspect-square overflow-hidden group">
-                        <img src="https://placehold.co/400x400/0f172a/00f2fe?text=Field+Photo+2" alt="Gallery 2" class="w-full h-full object-cover rounded-lg group-hover:scale-110 transition duration-300">
-                    </div>
-                    <div class="glass-panel p-2 rounded-xl border border-brand-cyan/20 aspect-square overflow-hidden group">
-                        <img src="https://placehold.co/400x400/0f172a/00f2fe?text=Field+Photo+3" alt="Gallery 3" class="w-full h-full object-cover rounded-lg group-hover:scale-110 transition duration-300">
-                    </div>
-                    <div class="glass-panel p-2 rounded-xl border border-brand-cyan/20 aspect-square overflow-hidden group">
-                        <img src="https://placehold.co/400x400/0f172a/00f2fe?text=Field+Photo+4" alt="Gallery 4" class="w-full h-full object-cover rounded-lg group-hover:scale-110 transition duration-300">
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="glass-card h-48 rounded-2xl flex items-center justify-center border border-gray-800 text-gray-500 text-sm">أرشيف الصور 01</div>
+                <div class="glass-card h-48 rounded-2xl flex items-center justify-center border border-gray-800 text-gray-500 text-sm">أرشيف الصور 02</div>
+                <div class="glass-card h-48 rounded-2xl flex items-center justify-center border border-gray-800 text-gray-500 text-sm">أرشيف الصور 03</div>
             </div>
         </section>
 
-        <!-- ================================================= ==================== -->
-        <!-- VIEW 6: DONATE & SUPPORT VIEW -->
-        <!-- ================================================= ==================== -->
-        <section id="view-donate" class="page-view space-y-10">
-            <div class="border-b border-brand-cyan/20 pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-hand-holding-heart text-brand-cyan"></i>
-                    <span data-ar="ادعمنا والتبرع" data-en="Donate & Support">ادعمنا والتبرع</span>
-                </h2>
-                <p class="text-sm text-gray-400 font-mono mt-1" data-ar="ساهم في دعم أنشطتنا الميدانية واستدامة العمل" data-en="Support our field activities and sustainable work">ساهم في دعم أنشطتنا الميدانية واستدامة العمل</p>
+        <!-- 6. DONATE TAB -->
+        <section id="tab-donate" class="hidden space-y-8 max-w-2xl mx-auto">
+            <div class="text-center space-y-3">
+                <h2 class="text-3xl font-black text-cyan-400">ادعم أعمالنا الإنسانية</h2>
+                <p class="text-gray-300">مساهمتك تصنع فارقاً حقيقياً في حياة الكثيرين.</p>
             </div>
-
-            <!-- Official Bank Card Details -->
-            <div class="max-w-2xl mx-auto glass-panel p-8 rounded-3xl border-2 border-brand-cyan/40 cyan-glow space-y-6 text-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-mono">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <span data-ar="الحساب البنكي الرسمي المعتمد" data-en="Official Approved Bank Account">الحساب البنكي الرسمي المعتمد</span>
+            <div class="glass-card p-8 rounded-3xl border border-cyan-500/30 text-center space-y-6">
+                <div class="w-16 h-16 bg-cyan-950 rounded-2xl mx-auto flex items-center justify-center text-cyan-400 text-2xl font-bold">BOK</div>
+                <h3 class="text-2xl font-bold text-white">بنك الخرطوم</h3>
+                <div class="bg-black/40 py-4 px-6 rounded-xl border border-gray-800 inline-block">
+                    <span class="text-xs text-gray-400 block mb-1">رقم الحساب</span>
+                    <span class="text-2xl font-mono font-bold text-cyan-400 tracking-wider">2180255</span>
                 </div>
-
-                <div class="space-y-2">
-                    <h3 class="text-2xl font-bold text-white" data-ar="بنك الخرطوم (Bank of Khartoum)" data-en="Bank of Khartoum">بنك الخرطوم (Bank of Khartoum)</h3>
-                    <p class="text-sm text-gray-300" data-ar="تحويل مباشر عبر بنكك (BOK)" data-en="Direct transfer via Bankak App">تحويل مباشر عبر بنكك (BOK)</p>
-                </div>
-
-                <!-- Account Number Display Box -->
-                <div class="bg-slate-950/90 p-6 rounded-2xl border border-brand-cyan/40 space-y-3">
-                    <div class="text-xs font-mono text-gray-400" data-ar="رقم الحساب (Account Number)" data-en="Account Number">رقم الحساب (Account Number)</div>
-                    <div class="text-4xl sm:text-5xl font-black text-brand-cyan font-mono tracking-widest" id="accNumber">2180255</div>
-                    <button onclick="copyAccount('2180255')" class="glass-panel text-xs text-brand-cyan border border-brand-cyan/30 px-4 py-2 rounded-lg hover:bg-brand-cyan/20 transition inline-flex items-center gap-2 mt-2">
-                        <i class="fa-solid fa-copy"></i>
-                        <span id="copyBtnText" data-ar="نسخ رقم الحساب" data-en="Copy Account Number">نسخ رقم الحساب</span>
-                    </button>
-                </div>
-
-                <div class="text-sm font-mono text-gray-300 pt-2 border-t border-brand-cyan/20">
-                    <span data-ar="اسم الحساب:" data-en="Account Name:">اسم الحساب:</span> 
-                    <strong class="text-white">ديمر الفرد قديل الاعيسر (Deemar Alfred Gideil Elaiser)</strong>
-                </div>
+                <p class="text-xs text-gray-400">يمكنكم التحويل المباشر عبر الحساب المعتمد للجمعية.</p>
             </div>
         </section>
 
-        <!-- ================================================= ==================== -->
-        <!-- VIEW 7: CONTACT US VIEW -->
-        <!-- ================================================= ==================== -->
-        <section id="view-contact" class="page-view space-y-10">
-            <div class="border-b border-brand-cyan/20 pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-envelope-open-text text-brand-cyan"></i>
-                    <span data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</span>
-                </h2>
-                <p class="text-sm text-gray-400 font-mono mt-1" data-ar="نحن هنا للإجابة على جميع استفساراتكم واقتراحاتكم" data-en="We are here to respond to all inquiries and suggestions">نحن هنا للإجابة على جميع استفساراتكم واقتراحاتكم</p>
+        <!-- 7. CONTACT TAB -->
+        <section id="tab-contact" class="hidden space-y-8 max-w-3xl mx-auto">
+            <div class="text-center space-y-3">
+                <h2 class="text-3xl font-black text-cyan-400">تواصل معنا</h2>
+                <p class="text-gray-300">نحن بانتظار أفكارك ومشاركاتك لتطوير المجتمع.</p>
             </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Formspree Contact Form -->
-                <div class="lg:col-span-7 glass-panel p-8 rounded-2xl border border-brand-cyan/30 space-y-6">
-                    <form action="https://formspree.io/f/xknkyyy" method="POST" class="space-y-4">
+            <div class="glass-card p-8 rounded-3xl border border-gray-800 space-y-6">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 text-gray-300">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold">📞</div>
                         <div>
-                            <label class="block text-xs font-mono text-gray-300 mb-1" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
-                            <input type="text" name="name" required class="w-full bg-slate-950/80 border border-brand-cyan/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-cyan text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-mono text-gray-300 mb-1" data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label>
-                            <input type="email" name="email" required class="w-full bg-slate-950/80 border border-brand-cyan/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-cyan text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-mono text-gray-300 mb-1" data-ar="نص الرسالة" data-en="Message">نص الرسالة</label>
-                            <textarea name="message" rows="5" required class="w-full bg-slate-950/80 border border-brand-cyan/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-cyan text-sm"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-brand-cyan to-brand-blue text-slate-950 font-bold py-3.5 rounded-xl cyan-glow hover:opacity-90 transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            <span data-ar="إرسال الرسالة المباشرة" data-en="Send Message">إرسال الرسالة المباشرة</span>
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Info Box & Location Indicator -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/20 space-y-4">
-                        <h3 class="text-lg font-bold text-white" data-ar="معلومات التواصل المباشر" data-en="Direct Contact Info">معلومات التواصل المباشر</h3>
-                        <div class="space-y-3 text-sm text-gray-300">
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-at text-brand-cyan w-5"></i>
-                                <span>deepain222@gmail.com</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-location-dot text-brand-cyan w-5"></i>
-                                <span data-ar="الخرطوم، السودان" data-en="Khartoum, Sudan">الخرطوم، السودان</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-globe text-brand-cyan w-5"></i>
-                                <span>longevitysudan.org</span>
-                            </div>
+                            <span class="text-xs text-gray-500 block">رقم الهاتف</span>
+                            <span class="font-mono text-white text-lg">00201125932576</span>
                         </div>
                     </div>
+                    <div class="flex items-center gap-4 text-gray-300">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold">📍</div>
+                        <div>
+                            <span class="text-xs text-gray-500 block">العنوان</span>
+                            <span class="text-white text-lg">الخرطوم، السودان</span>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="glass-panel p-6 rounded-2xl border border-brand-cyan/20 space-y-2">
-                        <div class="text-xs font-mono text-brand-cyan" data-ar="الموقع الجغرافي / المقر" data-en="Geographic Location">الموقع الجغرافي / المقر</div>
-                        <p class="text-xs text-gray-400" data-ar="أمبدة، الخرطوم، السودان (إحداثيات الميدان)" data-en="Ombada, Khartoum, Sudan">أمبدة، الخرطوم، السودان (إحداثيات الميدان)</p>
+                <!-- Social & WhatsApp Community Box -->
+                <div class="border-t border-gray-800 pt-6 space-y-4">
+                    <h4 class="text-white font-bold text-sm">مجتمعنا وشبكات التواصل</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://whatsapp.com" target="_blank" class="glow-btn px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-2">
+                            <span>مجتمع الواتساب</span>
+                        </a>
+                        <div class="flex items-center gap-3 text-gray-400 text-sm">
+                            <span class="hover:text-cyan-400 cursor-pointer">Facebook</span>
+                            <span>•</span>
+                            <span class="hover:text-cyan-400 cursor-pointer">Twitter (X)</span>
+                            <span>•</span>
+                            <span class="hover:text-cyan-400 cursor-pointer">Instagram</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -614,115 +296,27 @@
     </main>
 
     <!-- Footer -->
-    <footer class="glass-panel border-t border-brand-cyan/20 py-8 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400 font-mono">
-            <div>
-                © 2026 LONGEVITY SUDAN ORG. ALL RIGHTS RESERVED.
-            </div>
-            <div class="flex items-center gap-4">
-                <span data-ar="تصميم وتطوير منظومة البقاء" data-en="Designed for Longevity Sudan">تصميم وتطوير منظومة البقاء</span>
-                <span>•</span>
-                <a href="#contact" class="hover:text-brand-cyan" data-ar="الدعم الفني" data-en="Support">الدعم الفني</a>
-            </div>
-        </div>
+    <footer class="border-t border-gray-800 py-8 text-center text-xs text-gray-500 space-y-2">
+        <p>© 2026 Longevity Sudan. جميع الحقوق محفوظة لجمعية البقاء للأعمال الإنسانية.</p>
     </footer>
 
-    <!-- Client-Side SPA Router & Language Switcher JavaScript -->
+    <!-- JS Script for Tab Switching -->
     <script>
-        // Current Language State (Default AR)
-        let currentLang = 'ar';
-
-        // SPA Hash Route Handler
-        function handleRoute() {
-            let hash = window.location.hash.replace('#', '') || 'home';
-            const validViews = ['home', 'about', 'projects', 'plan', 'media', 'donate', 'contact'];
+        function switchTab(tabId) {
+            const tabs = ['home', 'about', 'projects', 'challenge', 'media', 'donate', 'contact'];
+            tabs.forEach(t => {
+                const section = document.getElementById('tab-' + t);
+                const navBtn = document.getElementById('nav-' + t);
+                if (section) section.classList.add('hidden');
+                if (navBtn) navBtn.classList.remove('text-cyan-400', 'font-bold');
+            });
             
-            if (!validViews.includes(hash)) {
-                hash = 'home';
-            }
-
-            // Hide all views
-            document.querySelectorAll('.page-view').forEach(view => {
-                view.classList.remove('active');
-            });
-
-            // Show current active view
-            const targetView = document.getElementById(`view-${hash}`);
-            if (targetView) {
-                targetView.classList.add('active');
-            }
-
-            // Update Navigation active state styling
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.getAttribute('data-view') === hash) {
-                    link.classList.add('text-brand-cyan', 'font-bold');
-                    link.classList.remove('text-gray-300');
-                } else {
-                    link.classList.remove('text-brand-cyan', 'font-bold');
-                    link.classList.add('text-gray-300');
-                }
-            });
-
-            // Scroll top smoothly
+            const activeSection = document.getElementById('tab-' + tabId);
+            const activeNav = document.getElementById('nav-' + tabId);
+            if (activeSection) activeSection.classList.remove('hidden');
+            if (activeNav) activeNav.classList.add('text-cyan-400', 'font-bold');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        // Language Switcher Function
-        function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            const htmlTag = document.documentElement;
-
-            if (currentLang === 'en') {
-                htmlTag.setAttribute('lang', 'en');
-                htmlTag.setAttribute('dir', 'ltr');
-                document.getElementById('langText').innerText = 'AR';
-            } else {
-                htmlTag.setAttribute('lang', 'ar');
-                htmlTag.setAttribute('dir', 'rtl');
-                document.getElementById('langText').innerText = 'EN';
-            }
-
-            // Translate all elements with data-ar and data-en attributes
-            document.querySelectorAll('[data-ar]').forEach(el => {
-                const text = el.getAttribute(`data-${currentLang}`);
-                if (text) {
-                    el.innerText = text;
-                }
-            });
-        }
-
-        // Copy Account Number Helper
-        function copyAccount(accNum) {
-            const tempInput = document.createElement('input');
-            tempInput.value = accNum;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-
-            const btnText = document.getElementById('copyBtnText');
-            const originalText = btnText.innerText;
-            btnText.innerText = currentLang === 'ar' ? 'تم النسخ بنجاح! ✓' : 'Copied! ✓';
-            setTimeout(() => {
-                btnText.innerText = originalText;
-            }, 2000);
-        }
-
-        // Mobile Menu Toggles
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        function closeMobileMenu() {
-            document.getElementById('mobileMenu').classList.add('hidden');
-        }
-
-        // Event Listeners for Routing
-        window.addEventListener('hashchange', handleRoute);
-        window.addEventListener('DOMContentLoaded', () => {
-            handleRoute();
-        });
     </script>
 </body>
 </html>
