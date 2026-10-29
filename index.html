@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Longevity Sudan | جمعية البقاء للأعمال الإنسانية</title>
-    <!-- Tailwind CSS CDN -->
+    <title>جمعية استدامة السودان الخيرية | Longevity Sudan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
@@ -26,90 +25,83 @@
             box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
             transform: translateY(-2px);
         }
+        /* إخفاء شعار Netlify تماماً */
+        [data-netlify-badge], .netlify-badge, #netlify-badge, iframe[src*="netlify"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-cyan-500 selection:text-white">
 
-    <!-- Navbar -->
+    <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 glass-card border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo & Brand -->
+            <!-- Brand & Logo -->
             <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
-                <div class="w-12 h-12 rounded-xl bg-black border border-cyan-500/40 flex items-center justify-center p-2 shadow-lg shadow-cyan-500/10">
-                    <svg viewBox="0 0 100 100" class="w-full h-full fill-white">
-                        <path d="M20 20 H50 V40 H35 V70 H70 V55 H85 V80 H20 Z" />
-                    </svg>
+                <div class="w-12 h-12 rounded-xl bg-black border border-cyan-500/40 flex items-center justify-center p-1 shadow-lg shadow-cyan-500/10 overflow-hidden">
+                    <img src="longevity_logo.png" alt="Longevity Logo" class="w-full h-full object-contain">
                 </div>
                 <div>
-                    <span class="text-xl font-black tracking-wider text-white">LONGEVITY SUDAN</span>
-                    <span class="block text-[10px] tracking-widest text-cyan-400 font-medium">YOUTH CHARITY ORG</span>
+                    <span class="text-xl font-black tracking-wider text-white block">LONGEVITY SUDAN</span>
+                    <span class="block text-[10px] tracking-widest text-cyan-400 font-medium" id="txt-subtitle">جمعية استدامة السودان الخيرية</span>
                 </div>
             </div>
 
-            <!-- Navigation Links -->
+            <!-- Nav Links -->
             <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
-                <button onclick="switchTab('home')" id="nav-home" class="transition hover:text-cyan-400 text-cyan-400 font-bold">الرئيسية</button>
-                <button onclick="switchTab('about')" id="nav-about" class="transition hover:text-cyan-400">من نحن</button>
-                <button onclick="switchTab('projects')" id="nav-projects" class="transition hover:text-cyan-400">المشاريع</button>
-                <button onclick="switchTab('challenge')" id="nav-challenge" class="transition hover:text-cyan-400">خطة الـ 30 يوماً</button>
-                <button onclick="switchTab('media')" id="nav-media" class="transition hover:text-cyan-400">الميديا</button>
-                <button onclick="switchTab('donate')" id="nav-donate" class="transition hover:text-cyan-400">ادعمنا</button>
-                <button onclick="switchTab('contact')" id="nav-contact" class="transition hover:text-cyan-400">تواصل معنا</button>
+                <button onclick="switchTab('home')" id="nav-home" class="transition hover:text-cyan-400 text-cyan-400 font-bold" data-key="home">الرئيسية</button>
+                <button onclick="switchTab('about')" id="nav-about" class="transition hover:text-cyan-400" data-key="about">من نحن</button>
+                <button onclick="switchTab('projects')" id="nav-projects" class="transition hover:text-cyan-400" data-key="projects">المشاريع</button>
+                <button onclick="switchTab('challenge')" id="nav-challenge" class="transition hover:text-cyan-400" data-key="challenge">خطة الـ 30 يوماً</button>
+                <button onclick="switchTab('media')" id="nav-media" class="transition hover:text-cyan-400" data-key="media">الميديا</button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="transition hover:text-cyan-400" data-key="contact">تواصل معنا</button>
             </nav>
 
-            <!-- Actions -->
+            <!-- Language Switcher -->
             <div class="flex items-center gap-4">
-                <button onclick="switchTab('donate')" class="glow-btn px-5 py-2.5 rounded-xl font-bold text-sm text-white shadow-lg flex items-center gap-2">
-                    <span>تبرع الآن</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                <button onclick="toggleLanguage()" class="glass-card hover:bg-gray-800 border border-cyan-500/30 text-cyan-400 font-bold px-4 py-2 rounded-xl text-xs transition flex items-center gap-2">
+                    <span id="lang-btn-text">EN</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Container (SPA) -->
+    <!-- Main Content Container -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
 
         <!-- 1. HOME TAB -->
         <section id="tab-home" class="space-y-12">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <!-- Left Glass Window -->
-                <div class="lg:col-span-5 glass-card p-6 rounded-2xl border border-cyan-500/30 relative overflow-hidden shadow-2xl">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent pointer-events-none"></div>
-                    <div class="flex items-center justify-center mb-6">
-                        <div class="w-24 h-24 rounded-2xl bg-black border border-cyan-400 flex items-center justify-center p-4 shadow-xl">
-                            <svg viewBox="0 0 100 100" class="w-full h-full fill-cyan-400">
-                                <path d="M20 20 H50 V40 H35 V70 H70 V55 H85 V80 H20 Z" />
-                            </svg>
-                        </div>
+                <div class="lg:col-span-5 glass-card p-6 rounded-2xl border border-cyan-500/30 relative overflow-hidden shadow-2xl flex flex-col items-center text-center">
+                    <div class="w-32 h-32 rounded-2xl bg-black/60 border border-cyan-400/40 p-2 shadow-xl mb-4">
+                        <img src="longevity_logo.png" alt="Longevity Sudan Logo" class="w-full h-full object-contain">
                     </div>
-                    <h2 class="text-center text-lg font-bold text-white mb-2">Longevity Sudan Org</h2>
-                    <p class="text-xs text-center text-gray-400 mb-6">جمعية البقاء للأعمال الإنسانية</p>
-                    <div class="flex justify-between items-center text-xs text-cyan-400 border-t border-gray-800 pt-4 font-mono">
+                    <h2 class="text-xl font-bold text-white mb-1">Longevity Sudan</h2>
+                    <p class="text-xs text-gray-400 mb-6" data-key="org_desc">جمعية استدامة السودان الخيرية</p>
+                    <div class="w-full flex justify-between items-center text-xs text-cyan-400 border-t border-gray-800 pt-4 font-mono">
                         <span>VER: 3.0_GLASS</span>
                         <span>REF: 2026_SD_ORG</span>
                     </div>
                 </div>
 
-                <!-- Right Hero Text -->
                 <div class="lg:col-span-7 space-y-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-semibold">
                         <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                        جمعية شبابية طوعية إنسانية • السودان
+                        <span data-key="tagline">جمعية استدامة السودان الخيرية • السودان</span>
                     </div>
-                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight" data-key="hero_title">
                         هل تريد أن تكون جزءاً من <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">التغيير الإيجابي؟</span>
                     </h1>
-                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed" data-key="hero_desc">
                         نحن نبني منظومة استدامة وبقاء تمكّن الشباب والفتيات في السودان من خلال التكنولوجيا والتعليم الميداني والتكامل الاجتماعي لبناء مستقبل أقوى.
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-4">
+                    <div class="pt-2">
                         <button onclick="switchTab('projects')" class="glow-btn px-6 py-3 rounded-xl font-bold text-white flex items-center gap-2">
-                            <span>استكشف مشاريعنا</span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </button>
-                        <button onclick="switchTab('donate')" class="glass-card hover:bg-gray-800 px-6 py-3 rounded-xl font-bold text-white border border-gray-700 flex items-center gap-2 transition">
-                            <span>ساهم في الدعم</span>
+                            <span data-key="btn_explore">استكشف مشاريعنا</span>
+                            <svg class="w-5 h-5 dir-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </button>
                     </div>
                 </div>
@@ -119,22 +111,22 @@
         <!-- 2. ABOUT TAB -->
         <section id="tab-about" class="hidden space-y-10">
             <div class="text-center max-w-3xl mx-auto space-y-4">
-                <h2 class="text-3xl font-black text-cyan-400">من نحن</h2>
-                <p class="text-gray-300 text-lg leading-relaxed">
-                    منظومة طوعية إنسانية مستقلة، تأسست برؤية عميقة لإعادة صياغة المستقبل بجهود الشباب السوداني وتوفير حلول مستدامة في مجالات الصحة، التغذية، والتعليم، تحت إدارة المؤسس <span class="text-white font-bold">ديمر الفرد قديل الاعيسر</span>.
+                <h2 class="text-3xl font-black text-cyan-400" data-key="about_title">من نحن</h2>
+                <p class="text-gray-300 text-lg leading-relaxed" data-key="about_text">
+                    جمعية استدامة السودان الخيرية هي منظومة طوعية إنسانية مستقلة، تأسست برؤية عميقة لإعادة صياغة المستقبل بجهود الشباب السوداني وتوفير حلول مستدامة، تحت إدارة المؤسس <span class="text-white font-bold">ديمر الفرد قديل الاعيسر</span>.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto glass-card p-8 rounded-3xl border border-cyan-500/20">
                 <div class="flex justify-center">
-                    <img src="المؤسس.jpeg" alt="المؤسس ديمر الفرد" class="rounded-2xl w-64 h-80 object-cover border border-cyan-500/40 shadow-2xl">
+                    <img src="deemar_founder.jpeg" alt="المؤسس ديمر الفرد" class="rounded-2xl w-64 h-80 object-cover border border-cyan-500/40 shadow-2xl">
                 </div>
                 <div class="space-y-4">
-                    <h3 class="text-2xl font-bold text-white">كلمة المؤسس</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">
+                    <h3 class="text-2xl font-bold text-white" data-key="founder_title">كلمة المؤسس</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed" data-key="founder_quote">
                         "نؤمن بأن التغيير الحقيقي لا يأتِ من الانتظار، بل يبدأ من انضباط الذات، والعمل الجماعي، وتوظيف أبسط الإمكانيات لصنع أثر مستدام يمتد لأجيال."
                     </p>
-                    <div class="pt-2 text-cyan-400 font-bold text-sm">
+                    <div class="pt-2 text-cyan-400 font-bold text-sm" data-key="founder_name">
                         ديمر الفرد قديل الاعيسر — مؤسس الجمعية
                     </div>
                 </div>
@@ -144,24 +136,27 @@
         <!-- 3. PROJECTS TAB -->
         <section id="tab-projects" class="hidden space-y-8">
             <div class="text-center max-w-2xl mx-auto space-y-3">
-                <h2 class="text-3xl font-black text-cyan-400">مشاريعنا الاستراتيجية</h2>
-                <p class="text-gray-400">مبادرات عملية تهدف إلى تمكين المجتمع وتوفير مقومات الحياة الكريمة.</p>
+                <h2 class="text-3xl font-black text-cyan-400" data-key="projects_title">مشاريعنا المستقبلية</h2>
+                <p class="text-gray-400" data-key="projects_sub">مبادرات استراتيجية تهدف لبناء وتأهيل أجيال المستقبل.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800">
+                <!-- المشروع 1 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800 hover:border-cyan-500/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold text-xl">01</div>
-                    <h3 class="text-xl font-bold text-white">التعليم الرقمي والمهني</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">توفير برامج تدريبية ومهارات عملية تمكّن الشباب من مواجهة تحديات العصر وسوق العمل.</p>
+                    <h3 class="text-xl font-bold text-white" data-key="p1_title">القرية الذكية للأطفال</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed" data-key="p1_desc">بيئة تفاعلية حديثة تدمج بين التكنولوجيا والتعليم الرقمي المبكر لبناء مهارات الأطفال وإعدادهم لمستقبل واعد.</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800">
+                <!-- المشروع 2 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800 hover:border-cyan-500/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold text-xl">02</div>
-                    <h3 class="text-xl font-bold text-white">الأمن الغذائي والتكافل</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">دعم الأسر المحتاجة وتوفير المساعدات الأساسية بروح التكاتف والتكافل المجتمعي.</p>
+                    <h3 class="text-xl font-bold text-white" data-key="p2_title">إرشاد وتوجيه الشباب (التحول الرقمي)</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed" data-key="p2_desc">تمكين الشباب والفتيات وربطهم بمهارات سوق العمل الحديث عبر تقنيات أدوات التحول الرقمي والتوجيه المهني.</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800">
+                <!-- المشروع 3 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border border-gray-800 hover:border-cyan-500/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold text-xl">03</div>
-                    <h3 class="text-xl font-bold text-white">الصحة المجتمعية</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">نشر الوعي الصحي وتأمين الاحتياجات الطبية الطارئة بالتعاون مع الكوادر التطوعية.</p>
+                    <h3 class="text-xl font-bold text-white" data-key="p3_title">تثقيف الآباء والأمهات بأساليب التربية الصحيحة</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed" data-key="p3_desc">برامج توعوية وأسرية مخصصة لتمكين الوالدين بنشر مفاهيم التربية النفسية والاجتماعية السليمة لأبنائهم.</p>
                 </div>
             </div>
         </section>
@@ -169,52 +164,48 @@
         <!-- 4. 30-DAY CHALLENGE TAB -->
         <section id="tab-challenge" class="hidden space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-3">
-                <h2 class="text-3xl font-black text-cyan-400">رحلة الانضباط والنمو الشخصي (30 يوماً)</h2>
-                <p class="text-gray-300">خطوات يومية بسيطة.. لبناء إنسان قوي ومستعد للأفضل.</p>
+                <h2 class="text-3xl font-black text-cyan-400" data-key="c_title">رحلة الانضباط والنمو الشخصي (30 يوماً)</h2>
+                <p class="text-gray-300" data-key="c_sub">خطوات يومية بسيطة.. لبناء إنسان قوي ومستعد للأفضل.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Week 1 -->
                 <div class="glass-card p-6 rounded-2xl space-y-3 border border-cyan-500/20">
-                    <div class="text-cyan-400 font-bold text-sm">الأسبوع الأول</div>
-                    <h3 class="text-xl font-bold text-white">انضباط اليوم والبدن (البداية من الباكر)</h3>
+                    <div class="text-cyan-400 font-bold text-sm" data-key="w1_tag">الأسبوع الأول</div>
+                    <h3 class="text-xl font-bold text-white" data-key="w1_title">انضباط اليوم والبدن (البداية من الباكر)</h3>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> الاستيقاظ مع الفجر ونشاط الصباح.</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> مشي يومي لمدة 20 إلى 30 دقيقة.</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> شرب الماء والحرص على النوم الباكر.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w1_p1">الاستيقاظ مع الفجر ونشاط الصباح.</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w1_p2">مشي يومي لمدة 20 إلى 30 دقيقة.</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w1_p3">شرب الماء والحرص على النوم الباكر.</span></li>
                     </ul>
                 </div>
 
-                <!-- Week 2 -->
                 <div class="glass-card p-6 rounded-2xl space-y-3 border border-cyan-500/20">
-                    <div class="text-cyan-400 font-bold text-sm">الأسبوع الثاني</div>
-                    <h3 class="text-xl font-bold text-white">ترتيب الذهن والنفس (التخلص من التشتت)</h3>
+                    <div class="text-cyan-400 font-bold text-sm" data-key="w2_tag">الأسبوع الثاني</div>
+                    <h3 class="text-xl font-bold text-white" data-key="w2_title">ترتيب الذهن والنفس (التخلص من التشتت)</h3>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> الابتعاد عن القيل والقال والأخبار المحبطة.</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> التدرب على ضبط النفس والرد بالكلمة الطيبة.</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> تخصيص وقت للسكينة والاستغفار والتفكر.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w2_p1">الابتعاد عن القيل والقال والأخبار المحبطة.</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w2_p2">التدرب على ضبط النفس والرد بالكلمة الطيبة.</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w2_p3">تخصيص وقت للسكينة والاستغفار والتفكر.</span></li>
                     </ul>
                 </div>
 
-                <!-- Week 3 -->
                 <div class="glass-card p-6 rounded-2xl space-y-3 border border-cyan-500/20">
-                    <div class="text-cyan-400 font-bold text-sm">الأسبوع الثالث</div>
-                    <h3 class="text-xl font-bold text-white">تطوير المهارة والتطبيق اليدوي الشخصي</h3>
+                    <div class="text-cyan-400 font-bold text-sm" data-key="w3_tag">الأسبوع الثالث</div>
+                    <h3 class="text-xl font-bold text-white" data-key="w3_title">تطوير المهارة والتطبيق اليدوي الشخصي</h3>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> تعلم حرفة أو مهارة عملية جديدة يومياً.</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> إصلاح وترتيب المساحة والأدوات الشخصية بنفسك.</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> الاعتماد الذاتي الكامل في تلبية الاحتياجات اليومية.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w3_p1">تعلم حرفة أو مهارة عملية جديدة يومياً.</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w3_p2">إصلاح وترتيب المساحة والأدوات الشخصية بنفسك.</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w3_p3">الاعتماد الذاتي الكامل في تلبية الاحتياجات اليومية.</span></li>
                     </ul>
                 </div>
 
-                <!-- Week 4 -->
                 <div class="glass-card p-6 rounded-2xl space-y-3 border border-cyan-500/20">
-                    <div class="text-cyan-400 font-bold text-sm">الأسبوع الرابع</div>
-                    <h3 class="text-xl font-bold text-white">الثبات واستدامة أسلوب الحياة</h3>
+                    <div class="text-cyan-400 font-bold text-sm" data-key="w4_tag">الأسبوع الرابع</div>
+                    <h3 class="text-xl font-bold text-white" data-key="w4_title">الثبات واستدامة أسلوب الحياة</h3>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> المحافظة على العادات المكتسبة لتصبح تلقائية.</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> تقييم الذات والاعتزاز بما تحقق من تطور.</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> وضع أهداف شخصية جديدة للشهر القادم.</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w4_p1">المحافظة على العادات المكتسبة لتصبح تلقائية.</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w4_p2">تقييم الذات والاعتزاز بما تحقق من تطور.</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> <span data-key="w4_p3">وضع أهداف شخصية جديدة للشهر القادم.</span></li>
                     </ul>
                 </div>
             </div>
@@ -223,8 +214,8 @@
         <!-- 5. MEDIA TAB -->
         <section id="tab-media" class="hidden space-y-8">
             <div class="text-center max-w-2xl mx-auto space-y-3">
-                <h2 class="text-3xl font-black text-cyan-400">المركز الإعلامي</h2>
-                <p class="text-gray-400">صور وأنشطة توثيقية لرحلة العمل الإنساني والتطوير.</p>
+                <h2 class="text-3xl font-black text-cyan-400" data-key="media_title">المركز الإعلامي</h2>
+                <p class="text-gray-400" data-key="media_sub">أنشطة توثيقية وتغطيات لرحلة العمل الإنساني والنمو.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div class="glass-card h-48 rounded-2xl flex items-center justify-center border border-gray-800 text-gray-500 text-sm">أرشيف الصور 01</div>
@@ -233,60 +224,44 @@
             </div>
         </section>
 
-        <!-- 6. DONATE TAB -->
-        <section id="tab-donate" class="hidden space-y-8 max-w-2xl mx-auto">
-            <div class="text-center space-y-3">
-                <h2 class="text-3xl font-black text-cyan-400">ادعم أعمالنا الإنسانية</h2>
-                <p class="text-gray-300">مساهمتك تصنع فارقاً حقيقياً في حياة الكثيرين.</p>
-            </div>
-            <div class="glass-card p-8 rounded-3xl border border-cyan-500/30 text-center space-y-6">
-                <div class="w-16 h-16 bg-cyan-950 rounded-2xl mx-auto flex items-center justify-center text-cyan-400 text-2xl font-bold">BOK</div>
-                <h3 class="text-2xl font-bold text-white">بنك الخرطوم</h3>
-                <div class="bg-black/40 py-4 px-6 rounded-xl border border-gray-800 inline-block">
-                    <span class="text-xs text-gray-400 block mb-1">رقم الحساب</span>
-                    <span class="text-2xl font-mono font-bold text-cyan-400 tracking-wider">2180255</span>
-                </div>
-                <p class="text-xs text-gray-400">يمكنكم التحويل المباشر عبر الحساب المعتمد للجمعية.</p>
-            </div>
-        </section>
-
-        <!-- 7. CONTACT TAB -->
+        <!-- 6. CONTACT TAB -->
         <section id="tab-contact" class="hidden space-y-8 max-w-3xl mx-auto">
             <div class="text-center space-y-3">
-                <h2 class="text-3xl font-black text-cyan-400">تواصل معنا</h2>
-                <p class="text-gray-300">نحن بانتظار أفكارك ومشاركاتك لتطوير المجتمع.</p>
+                <h2 class="text-3xl font-black text-cyan-400" data-key="contact_title">معلومات التواصل المباشر</h2>
+                <p class="text-gray-300" data-key="contact_sub">نحن بانتظار تواصلك وأفكارك لبناء المستقبل.</p>
             </div>
             <div class="glass-card p-8 rounded-3xl border border-gray-800 space-y-6">
                 <div class="space-y-4">
                     <div class="flex items-center gap-4 text-gray-300">
                         <div class="w-10 h-10 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold">📞</div>
                         <div>
-                            <span class="text-xs text-gray-500 block">رقم الهاتف</span>
+                            <span class="text-xs text-gray-500 block" data-key="phone_label">رقم الهاتف</span>
                             <span class="font-mono text-white text-lg">00201125932576</span>
                         </div>
                     </div>
                     <div class="flex items-center gap-4 text-gray-300">
                         <div class="w-10 h-10 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold">📍</div>
                         <div>
-                            <span class="text-xs text-gray-500 block">العنوان</span>
-                            <span class="text-white text-lg">الخرطوم، السودان</span>
+                            <span class="text-xs text-gray-500 block" data-key="address_label">العنوان</span>
+                            <span class="text-white text-lg" data-key="address_val">الخرطوم، السودان</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Social & WhatsApp Community Box -->
+                <!-- Social Links & WhatsApp Community -->
                 <div class="border-t border-gray-800 pt-6 space-y-4">
-                    <h4 class="text-white font-bold text-sm">مجتمعنا وشبكات التواصل</h4>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="https://whatsapp.com" target="_blank" class="glow-btn px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-2">
-                            <span>مجتمع الواتساب</span>
+                    <h4 class="text-white font-bold text-sm" data-key="community_title">مجتمعنا وقنوات التواصل</h4>
+                    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                        <a href="https://chat.whatsapp.com/BQfKeVmIRBqCjPBCkg49ZM" target="_blank" class="glow-btn px-5 py-2.5 rounded-xl text-xs font-bold text-white flex items-center gap-2">
+                            <span data-key="wa_btn">انضم لمجتمع الواتساب</span>
                         </a>
-                        <div class="flex items-center gap-3 text-gray-400 text-sm">
-                            <span class="hover:text-cyan-400 cursor-pointer">Facebook</span>
+
+                        <div class="flex items-center gap-4 text-gray-400 text-sm flex-wrap">
+                            <a href="https://www.facebook.com/share/1DYpavGU5L/?mibextid=wwXIfr" target="_blank" class="hover:text-cyan-400 transition">Facebook</a>
                             <span>•</span>
-                            <span class="hover:text-cyan-400 cursor-pointer">Twitter (X)</span>
+                            <a href="https://www.instagram.com/longevity_sudan?srtk=aWVidDBrZWR5aWN4&utm_source=qr" target="_blank" class="hover:text-cyan-400 transition">Instagram</a>
                             <span>•</span>
-                            <span class="hover:text-cyan-400 cursor-pointer">Instagram</span>
+                            <a href="https://www.tiktok.com/@longevity_sudan" target="_blank" class="hover:text-cyan-400 transition">TikTok</a>
                         </div>
                     </div>
                 </div>
@@ -296,26 +271,89 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-800 py-8 text-center text-xs text-gray-500 space-y-2">
-        <p>© 2026 Longevity Sudan. جميع الحقوق محفوظة لجمعية البقاء للأعمال الإنسانية.</p>
+    <footer class="border-t border-gray-800 py-8 text-center text-xs text-gray-500">
+        <p>© 2026 Longevity Sudan. جميع الحقوق محفوظة لجمعية استدامة السودان الخيرية.</p>
     </footer>
 
-    <!-- JS Script for Tab Switching -->
+    <!-- Script -->
     <script>
+        const translations = {
+            ar: {
+                subtitle: "جمعية استدامة السودان الخيرية",
+                home: "الرئيسية", about: "من نحن", projects: "المشاريع", challenge: "خطة الـ 30 يوماً", media: "الميديا", contact: "تواصل معنا",
+                org_desc: "جمعية استدامة السودان الخيرية", tagline: "جمعية استدامة السودان الخيرية • السودان",
+                hero_title: "هل تريد أن تكون جزءاً من <span class='text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500'>التغيير الإيجابي؟</span>",
+                hero_desc: "نحن نبني منظومة استدامة وبقاء تمكّن الشباب والفتيات في السودان من خلال التكنولوجيا والتعليم الميداني والتكامل الاجتماعي لبناء مستقبل أقوى.",
+                btn_explore: "استكشف مشاريعنا",
+                about_title: "من نحن", about_text: "جمعية استدامة السودان الخيرية هي منظومة طوعية إنسانية مستقلة، تأسست برؤية عميقة لإعادة صياغة المستقبل بجهود الشباب السوداني وتوفير حلول مستدامة، تحت إدارة المؤسس <span class='text-white font-bold'>ديمر الفرد قديل الاعيسر</span>.",
+                founder_title: "كلمة المؤسس", founder_quote: "\"نؤمن بأن التغيير الحقيقي لا يأتِ من الانتظار، بل يبدأ من انضباط الذات، والعمل الجماعي، وتوظيف أبسط الإمكانيات لصنع أثر مستدام يمتد لأجيال.\"", founder_name: "ديمر الفرد قديل الاعيسر — مؤسس الجمعية",
+                projects_title: "مشاريعنا المستقبلية", projects_sub: "مبادرات استراتيجية تهدف لبناء وتأهيل أجيال المستقبل.",
+                p1_title: "القرية الذكية للأطفال", p1_desc: "بيئة تفاعلية حديثة تدمج بين التكنولوجيا والتعليم الرقمي المبكر لبناء مهارات الأطفال وإعدادهم لمستقبل واعد.",
+                p2_title: "إرشاد وتوجيه الشباب (التحول الرقمي)", p2_desc: "تمكين الشباب والفتيات وربطهم بمهارات سوق العمل الحديث عبر تقنيات أدوات التحول الرقمي والتوجيه المهني.",
+                p3_title: "تثقيف الآباء والأمهات بأساليب التربية الصحيحة", p3_desc: "برامج توعوية وأسرية مخصصة لتمكين الوالدين بنشر مفاهيم التربية النفسية والاجتماعية السليمة لأبنائهم.",
+                c_title: "رحلة الانضباط والنمو الشخصي (30 يوماً)", c_sub: "خطوات يومية بسيطة.. لبناء إنسان قوي ومستعد للأفضل.",
+                w1_tag: "الأسبوع الأول", w1_title: "انضباط اليوم والبدن (البداية من الباكر)", w1_p1: "الاستيقاظ مع الفجر ونشاط الصباح.", w1_p2: "مشي يومي لمدة 20 إلى 30 دقيقة.", w1_p3: "شرب الماء والحرص على النوم الباكر.",
+                w2_tag: "الأسبوع الثاني", w2_title: "ترتيب الذهن والنفس (التخلص من التشتت)", w2_p1: "الابتعاد عن القيل والقال والأخبار المحبطة.", w2_p2: "التدرب على ضبط النفس والرد بالكلمة الطيبة.", w2_p3: "تخصيص وقت للسكينة والاستغفار والتفكر.",
+                w3_tag: "الأسبوع الثالث", w3_title: "تطوير المهارة والتطبيق اليدوي الشخصي", w3_p1: "تعلم حرفة أو مهارة عملية جديدة يومياً.", w3_p2: "إصلاح وترتيب المساحة والأدوات الشخصية بنفسك.", w3_p3: "الاعتماد الذاتي الكامل في تلبية الاحتياجات اليومية.",
+                w4_tag: "الأسبوع الرابع", w4_title: "الثبات واستدامة أسلوب الحياة", w4_p1: "المحافظة على العادات المكتسبة لتصبح تلقائية.", w4_p2: "تقييم الذات والاعتزاز بما تحقق من تطور.", w4_p3: "وضع أهداف شخصية جديدة للشهر القادم.",
+                media_title: "المركز الإعلامي", media_sub: "أنشطة توثيقية وتغطيات لرحلة العمل الإنساني والنمو.",
+                contact_title: "معلومات التواصل المباشر", contact_sub: "نحن بانتظار تواصلك وأفكارك لبناء المستقبل.",
+                phone_label: "رقم الهاتف", address_label: "العنوان", address_val: "الخرطوم، السودان", community_title: "مجتمعنا وقنوات التواصل", wa_btn: "انضم لمجتمع الواتساب"
+            },
+            en: {
+                subtitle: "Longevity Sudan Charity Association",
+                home: "Home", about: "About Us", projects: "Projects", challenge: "30-Day Challenge", media: "Media", contact: "Contact",
+                org_desc: "Longevity Sudan Charity Association", tagline: "Longevity Sudan Charity Association • Sudan",
+                hero_title: "Do you want to be part of <span class='text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500'>Positive Change?</span>",
+                hero_desc: "We build a sustainability ecosystem empowering youth in Sudan through technology, field education, and community integration.",
+                btn_explore: "Explore Our Projects",
+                about_title: "About Us", about_text: "Longevity Sudan Charity Association is an independent youth charity founded to reshape the future through Sudanese youth efforts, under Founder <span class='text-white font-bold'>Deemar Alfred Gideil Alaiser</span>.",
+                founder_title: "Founder's Message", founder_quote: "\"We believe real change starts from self-discipline, teamwork, and utilizing simple resources to create lasting impact.\"", founder_name: "Deemar Alfred Gideil Alaiser — Founder",
+                projects_title: "Our Future Projects", projects_sub: "Strategic initiatives aimed at building and equipping future generations.",
+                p1_title: "Smart Village for Children", p1_desc: "An interactive modern environment integrating tech and early digital learning to build kids' skills for a promising future.",
+                p2_title: "Youth Guidance & Mentorship (Digital Transformation)", p2_desc: "Empowering youth and connecting them with modern labor market skills through digital tools and career guidance.",
+                p3_title: "Parental Education on Sound Child-Rearing", p3_desc: "Dedicated family awareness programs empowering parents with sound psychological and social upbringing concepts.",
+                c_title: "Personal Growth & Discipline Journey (30 Days)", c_sub: "Simple daily steps to build a strong, self-reliant individual.",
+                w1_tag: "Week 1", w1_title: "Physical & Daily Discipline", w1_p1: "Early morning waking and active start.", w1_p2: "Daily 20-30 min walk.", w1_p3: "Hydration and early sleep routine.",
+                w2_tag: "Week 2", w2_title: "Mindset & Mental Clarity", w2_p1: "Avoiding gossip and negative news.", w2_p2: "Self-control and kind communication.", w2_p3: "Quiet time for reflection and peace.",
+                w3_tag: "Week 3", w3_title: "Skill Development & Practice", w3_p1: "Learning a new practical skill daily.", w3_p2: "Organizing and repairing personal spaces.", w3_p3: "Full self-reliance in daily needs.",
+                w4_tag: "Week 4", w4_title: "Consistency & Sustainability", w4_p1: "Maintaining habits into routine.", w4_p2: "Self-evaluation and celebrating progress.", w4_p3: "Setting new personal goals for next month.",
+                media_title: "Media Center", media_sub: "Documented activities of our humanitarian journey.",
+                contact_title: "Direct Contact Info", contact_sub: "We welcome your ideas and inquiries to build the future.",
+                phone_label: "Phone Number", address_label: "Address", address_val: "Khartoum, Sudan", community_title: "Community & Channels", wa_btn: "Join WhatsApp Community"
+            }
+        };
+
+        let currentLang = 'ar';
+
         function switchTab(tabId) {
-            const tabs = ['home', 'about', 'projects', 'challenge', 'media', 'donate', 'contact'];
+            const tabs = ['home', 'about', 'projects', 'challenge', 'media', 'contact'];
             tabs.forEach(t => {
                 const section = document.getElementById('tab-' + t);
                 const navBtn = document.getElementById('nav-' + t);
                 if (section) section.classList.add('hidden');
                 if (navBtn) navBtn.classList.remove('text-cyan-400', 'font-bold');
             });
-            
-            const activeSection = document.getElementById('tab-' + tabId);
+            const activeSec = document.getElementById('tab-' + tabId);
             const activeNav = document.getElementById('nav-' + tabId);
-            if (activeSection) activeSection.classList.remove('hidden');
+            if (activeSec) activeSec.classList.remove('hidden');
             if (activeNav) activeNav.classList.add('text-cyan-400', 'font-bold');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            document.getElementById('lang-btn-text').innerText = currentLang === 'ar' ? 'EN' : 'AR';
+            
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+            document.getElementById('txt-subtitle').innerText = translations[currentLang].subtitle;
         }
     </script>
 </body>
