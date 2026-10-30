@@ -328,11 +328,11 @@
                 media_title: "المركز الإعلامي", media_sub: "أنشطة توثيقية وتغطيات لرحلة العمل الإنساني والنمو.",
                 media_1: "أرشيف الصور 01", media_2: "أرشيف الصور 02", media_3: "أرشيف الصور 03",
                 contact_title: "معلومات التواصل المباشر", contact_sub: "نحن بانتظار تواصلك وأفكارك لبناء المستقبل.",
-                phone_label: "رقم الهاتف", address_label: "العنوان", address_val: "الخرطوم، السودان", community_title: "مجتمعنا وقنوات التواصل", wa_btn: "انضم لمجتمع الواتساب"
-           vision_title: "رؤيتنا",
-vision_desc: "بناء مجتمع سوداني مستدام وممكّن تكنولوجياً وفكرياً، قادراً على صناعة مستقبل أفضل بأيدي شبابه وأجياله القادمة.",
-goals_title: "أهدافنا",
-goals_desc: "تمكين الشباب بالمهارات الرقمية، نشر الوعي التربوي والأبوي، وتوفير بيئة تفاعلية حديثة تدعم الأطفال وتضمن استدامة التنمية المجتمعية.",
+                phone_label: "رقم الهاتف", address_label: "العنوان", address_val: "الخرطوم، السودان", community_title: "مجتمعنا وقنوات التواصل", wa_btn: "انضم لمجتمع الواتساب",
+                vision_title: "رؤيتنا",
+                vision_desc: "بناء مجتمع سوداني مستدام وممكّن تكنولوجياً وفكرياً، قادراً على صناعة مستقبل أفضل بأيدي شبابه وأجياله القادمة.",
+                goals_title: "أهدافنا",
+                goals_desc: "تمكين الشباب بالمهارات الرقمية، نشر الوعي التربوي والأبوي، وتوفير بيئة تفاعلية حديثة تدعم الأطفال وتضمن استدامة التنمية المجتمعية."
             },
             en: {
                 subtitle: "Longevity Sudan Charity Association",
@@ -355,12 +355,12 @@ goals_desc: "تمكين الشباب بالمهارات الرقمية، نشر 
                 media_title: "Media Center", media_sub: "Documented activities of our humanitarian journey.",
                 media_1: "Photo Archive 01", media_2: "Photo Archive 02", media_3: "Photo Archive 03",
                 contact_title: "Direct Contact Info", contact_sub: "We welcome your ideas and inquiries to build the future.",
-                phone_label: "Phone Number", address_label: "Address", address_val: "Khartoum, Sudan", community_title: "Community & Channels", wa_btn: "Join WhatsApp Community"
-           vision_title: "Our Vision",
-vision_desc: "Building a sustainable and empowered Sudanese society, technologically and intellectually capable of shaping a better future.",
-goals_title: "Our Goals",
-goals_desc: "Empowering youth with digital skills, spreading parental awareness, and providing a modern environment supporting children.",
-        }
+                phone_label: "Phone Number", address_label: "Address", address_val: "Khartoum, Sudan", community_title: "Community & Channels", wa_btn: "Join WhatsApp Community",
+                vision_title: "Our Vision",
+                vision_desc: "Building a sustainable and empowered Sudanese society, technologically and intellectually capable of shaping a better future.",
+                goals_title: "Our Goals",
+                goals_desc: "Empowering youth with digital skills, spreading parental awareness, and providing a modern environment supporting children."
+            }
         };
 
         let currentLang = 'ar';
@@ -380,25 +380,23 @@ goals_desc: "Empowering youth with digital skills, spreading parental awareness,
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu) menu.classList.toggle('hidden');
-        }
-
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             document.getElementById('lang-btn-text').innerText = currentLang === 'ar' ? 'EN' : 'AR';
-            
+
+            // Translate elements
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (translations[currentLang][key]) {
                     el.innerHTML = translations[currentLang][key];
                 }
             });
-            document.getElementById('txt-subtitle').innerText = translations[currentLang].subtitle;
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
     </script>
-</body>
-</html>
